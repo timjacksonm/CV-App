@@ -12,10 +12,13 @@ class App extends Component {
 	render() {
 		return (
 			<div className="content">
+				<section>
+					<div className="skewed"></div>
+				</section>
 				<header>
 					<Title />
 				</header>
-				<main>
+				<main className="form">
 					<Profile />
 					<Skills />
 					<Education />
