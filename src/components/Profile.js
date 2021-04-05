@@ -5,9 +5,9 @@ class Profile extends Component {
 		return (
 			<div>
 				<h3>Personal Information</h3>
-				<input placeholder="First Name" />
-				<input placeholder="Last Name" />
-				<input placeholder="Email" />
+				<input placeholder="First Name" type="text" />
+				<input placeholder="Last Name" type="text" />
+				<input placeholder="Email" type="email" />
 				<input placeholder="Phone Number" type="tel" />
 			</div>
 		);
