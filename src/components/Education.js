@@ -16,7 +16,7 @@ class Education extends Component {
           <input tpye='text' placeholder='Computer Science ' />
           <h5>Completion Date</h5>
           <input type='date' />
-          <button>Add</button>
+          <button onClick={this.props.onAdd}>Add</button>
         </form>
         <ul></ul>
       </div>
