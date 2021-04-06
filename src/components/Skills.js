@@ -17,12 +17,12 @@ class Skills extends Component {
           <button type='submit'>Add</button>
         </form>
         <ul>
-          {this.props.skillList.map((skill) => {
+          {this.props.skillList.map((item) => {
             return (
               <div key={uniqid()}>
-                <li key={uniqid()}>{skill}</li>
+                <li key={uniqid()}>{item}</li>
                 <FontAwesomeIcon
-                  onClick={() => this.props.onDelete(skill)}
+                  onClick={() => this.props.onDelete('skills', item)}
                   key={uniqid()}
                   icon='trash'
                 />

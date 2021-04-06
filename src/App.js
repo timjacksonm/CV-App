@@ -19,6 +19,7 @@ class App extends Component {
     this.state = {
       inputs: '',
       skills: [],
+      education: [],
     };
   }
   handleChange = (e) => {
@@ -40,23 +41,50 @@ class App extends Component {
         }));
         break;
       case 'education':
-        this.setState((prevState) => ({}));
+        this.setState((prevState) => ({
+          education: prevState.education.concat({
+            Name: selectForm.querySelector("input[name='name']").value,
+            Location: selectForm.querySelector("input[name='location']").value,
+            Degree: selectForm.querySelector("input[name='degree']").value,
+            Major: selectForm.querySelector("input[name='major']").value,
+            DateCompleted: selectForm.querySelector("input[name='date']").value,
+          }),
+        }));
         break;
       default:
         console.log('there was an error in handleAdd');
         break;
     }
   };
-  handleDelete = (name) => {
+  handleDelete = (section, name) => {
     const reference = name;
-    this.setState((prevState) => ({
-      skills: prevState.skills.filter((index) => {
-        if (index !== reference) {
-          return true;
-        }
-        return false;
-      }),
-    }));
+    switch (section) {
+      case 'skills':
+        this.setState((prevState) => ({
+          skills: prevState.skills.filter((index) => {
+            if (index !== reference) {
+              return true;
+            }
+            return false;
+          }),
+        }));
+        break;
+
+      case 'education':
+        this.setState((prevState) => ({
+          education: prevState.education.filter((index) => {
+            if (index.Name !== reference) {
+              return true;
+            }
+            return false;
+          }),
+        }));
+        break;
+
+      default:
+        console.log('there was an error in handleDelete');
+        break;
+    }
   };
   render() {
     return (
@@ -76,7 +104,13 @@ class App extends Component {
             onAdd={this.handleAdd}
             onDelete={this.handleDelete}
           />
-          <Education onAdd={this.handleAdd} />
+          <Education
+            currentInput={this.state.inputs}
+            resetInput={this.handleChange}
+            educationList={this.state.education}
+            onAdd={this.handleAdd}
+            onDelete={this.handleDelete}
+          />
           <WorkExp />
           <References />
         </main>
