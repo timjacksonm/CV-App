@@ -13,6 +13,8 @@ class Education extends Component {
             type='text'
             placeholder='Stanford University'
             name='name'
+            onChange={this.props.handleChange}
+            value={this.props.state.name}
             required
           />
           <h5>School Location</h5>
@@ -20,19 +22,36 @@ class Education extends Component {
             type='text'
             placeholder='Standford, CA'
             name='location'
+            onChange={this.props.handleChange}
+            value={this.props.state.location}
             required
           />
           <h5>Degree</h5>
-          <input type='text' placeholder='BS' name='degree' required />
+          <input
+            type='text'
+            placeholder='BS'
+            name='degree'
+            onChange={this.props.handleChange}
+            value={this.props.state.degree}
+            required
+          />
           <h5>Major</h5>
           <input
             tpye='text'
             placeholder='Computer Science'
             name='major'
+            onChange={this.props.handleChange}
+            value={this.props.state.major}
             required
           />
           <h5>Completion Date</h5>
-          <input type='date' name='date' required />
+          <input
+            type='date'
+            name='date'
+            onChange={this.props.handleChange}
+            value={this.props.state.date}
+            required
+          />
           <button type='submit'>Add</button>
         </form>
         <ul>

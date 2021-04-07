@@ -10,8 +10,9 @@ class Skills extends Component {
         <form id='skills' onSubmit={this.props.onAdd}>
           <input
             type='text'
-            onChange={this.props.resetInput}
-            value={this.props.currentInput}
+            name='skill'
+            onChange={this.props.handleChange}
+            value={this.props.state.skill}
             required
           />
           <button type='submit'>Add</button>

@@ -17,14 +17,20 @@ class App extends Component {
     super();
 
     this.state = {
-      inputs: '',
       skills: [],
       education: [],
+      skill: '',
+      name: '',
+      location: '',
+      degree: '',
+      major: '',
+      date: '',
     };
   }
   handleChange = (e) => {
+    const value = e.target.value;
     this.setState({
-      inputs: e.target.value,
+      [e.target.name]: value,
     });
   };
   handleAdd = (e) => {
@@ -34,7 +40,7 @@ class App extends Component {
     switch (selectForm.id) {
       case 'skills':
         this.setState((prevState) => ({
-          inputs: '',
+          skill: '',
           skills: prevState.skills.concat(
             selectForm.querySelector('input').value
           ),
@@ -49,6 +55,11 @@ class App extends Component {
             Major: selectForm.querySelector("input[name='major']").value,
             DateCompleted: selectForm.querySelector("input[name='date']").value,
           }),
+          name: '',
+          location: '',
+          degree: '',
+          major: '',
+          date: '',
         }));
         break;
       default:
@@ -98,15 +109,15 @@ class App extends Component {
         <main className='form'>
           <Profile />
           <Skills
-            currentInput={this.state.inputs}
-            resetInput={this.handleChange}
+            state={this.state}
+            handleChange={this.handleChange}
             skillList={this.state.skills}
             onAdd={this.handleAdd}
             onDelete={this.handleDelete}
           />
           <Education
-            currentInput={this.state.inputs}
-            resetInput={this.handleChange}
+            state={this.state}
+            handleChange={this.handleChange}
             educationList={this.state.education}
             onAdd={this.handleAdd}
             onDelete={this.handleDelete}
