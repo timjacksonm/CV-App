@@ -19,12 +19,20 @@ class App extends Component {
     this.state = {
       skills: [],
       education: [],
-      skill: '',
-      name: '',
-      location: '',
-      degree: '',
-      major: '',
-      date: '',
+      jobs: [],
+      jobDuties: [],
+      skillInput: '',
+      eduNameInput: '',
+      eduLocationInput: '',
+      eduDegreeInput: '',
+      eduMajorInput: '',
+      eduDateInput: '',
+      workNameInput: '',
+      workTitleInput: '',
+      workLocationInput: '',
+      workStartInput: '',
+      workEndInput: '',
+      jobDescription: '',
     };
   }
   handleChange = (e) => {
@@ -40,7 +48,7 @@ class App extends Component {
     switch (selectForm.id) {
       case 'skills':
         this.setState((prevState) => ({
-          skill: '',
+          skillInput: '',
           skills: prevState.skills.concat(
             selectForm.querySelector('input').value
           ),
@@ -49,17 +57,44 @@ class App extends Component {
       case 'education':
         this.setState((prevState) => ({
           education: prevState.education.concat({
-            Name: selectForm.querySelector("input[name='name']").value,
-            Location: selectForm.querySelector("input[name='location']").value,
-            Degree: selectForm.querySelector("input[name='degree']").value,
-            Major: selectForm.querySelector("input[name='major']").value,
-            DateCompleted: selectForm.querySelector("input[name='date']").value,
+            Name: selectForm.querySelector("input[name='eduNameInput']").value,
+            Location: selectForm.querySelector("input[name='eduLocationInput']")
+              .value,
+            Degree: selectForm.querySelector("input[name='eduDegreeInput']")
+              .value,
+            Major: selectForm.querySelector("input[name='eduMajorInput']")
+              .value,
+            DateCompleted: selectForm.querySelector(
+              "input[name='eduDateInput']"
+            ).value,
           }),
-          name: '',
-          location: '',
-          degree: '',
-          major: '',
-          date: '',
+          workNameInput: '',
+          workTitleInput: '',
+          workLocationInput: '',
+          workStartInput: '',
+          workEndInput: '',
+        }));
+        break;
+      case 'workExp':
+        this.setState((prevState) => ({
+          jobs: prevState.jobs.concat({
+            Name: selectForm.querySelector("input[name='workNameInput']").value,
+            Title: selectForm.querySelector("input[name='workTitleInput']")
+              .value,
+            Location: selectForm.querySelector(
+              "input[name='workLocationInput']"
+            ).value,
+            Start: selectForm.querySelector("input[name='workStartInput']")
+              .value,
+            End: selectForm.querySelector("input[name='workEndInput']").value,
+            Description: prevState.jobDuties,
+          }),
+          workNameInput: '',
+          workTitleInput: '',
+          workLocationInput: '',
+          workStartInput: '',
+          workEndInput: '',
+          jobDuties: [],
         }));
         break;
       default:
@@ -91,13 +126,41 @@ class App extends Component {
           }),
         }));
         break;
+      case 'workExp':
+        this.setState((prevState) => ({
+          jobs: prevState.jobs.filter((index) => {
+            if (index.Name !== reference) {
+              return true;
+            }
+            return false;
+          }),
+        }));
+        break;
+      case 'jobDuties':
+        this.setState((prevState) => ({
+          jobDuties: prevState.jobDuties.filter((index) => {
+            if (index !== reference) {
+              return true;
+            }
+            return false;
+          }),
+        }));
+        break;
 
       default:
         console.log('there was an error in handleDelete');
         break;
     }
   };
+  handleAddDescription = (e) => {
+    const reference = e.target.previousSibling.value;
+    this.setState((prevState) => ({
+      jobDescription: '',
+      jobDuties: prevState.jobDuties.concat(reference),
+    }));
+  };
   render() {
+    console.log(this.state);
     return (
       <div className='content'>
         <section>
@@ -122,7 +185,14 @@ class App extends Component {
             onAdd={this.handleAdd}
             onDelete={this.handleDelete}
           />
-          <WorkExp />
+          <WorkExp
+            state={this.state}
+            handleChange={this.handleChange}
+            jobList={this.state.jobs}
+            onAdd={this.handleAdd}
+            onAddDescription={this.handleAddDescription}
+            onDelete={this.handleDelete}
+          />
           <References />
         </main>
         <footer>
