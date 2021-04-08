@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../styles/Education.scss';
 
 class Education extends Component {
   render() {
     return (
-      <div>
+      <div className='education'>
         <h3>Education and Training</h3>
-        <form id='education' onSubmit={this.props.onAdd}>
+        <form id='education' className='education' onSubmit={this.props.onAdd}>
           <h5>School Name</h5>
           <input
             type='text'
@@ -57,14 +58,21 @@ class Education extends Component {
         <ul>
           {this.props.educationList.map((item) => {
             return (
-              <div key={uniqid()}>
-                <li
-                  key={uniqid()}
-                >{`Name:${item.Name} Location:${item.Location} Degree:${item.Degree} Major:${item.Major} Completion:${item.DateCompleted}`}</li>
+              <div key={uniqid()} className='listBox'>
+                <li key={uniqid()}>
+                  <ul className='list'>
+                    <li>{`Name: ${item.Name}`}</li>
+                    <li>{`Location: ${item.Location}`}</li>
+                    <li>{`Degree: ${item.Degree}`}</li>
+                    <li>{`Major: ${item.Major}`}</li>
+                    <li>{`Completion: ${item.DateCompleted}`}</li>
+                  </ul>
+                </li>
                 <FontAwesomeIcon
                   onClick={() => this.props.onDelete('education', item.Name)}
                   key={uniqid()}
                   icon='trash'
+                  className='trashIcon'
                 />
               </div>
             );

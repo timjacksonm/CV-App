@@ -1,0 +1,11 @@
+.profile {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  input {
+    line-height: 25px;
+    width: 140px;
+    margin: 0.1em;
+  }
+}

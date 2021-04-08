@@ -26,15 +26,17 @@ body {
     z-index: 0;
   }
   .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
     box-shadow: 0px 2px 1px -1px #000, 0px 1px 1px 0px #000,
       0px 1px 3px 0px #000;
     padding: 10px;
-    overflow-y: auto;
-    input,
-    button {
-      width: 100%;
+    max-width: 655px;
+    div {
+      margin: 0.5rem;
     }
   }
   header {

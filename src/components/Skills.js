@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../styles/Skills.scss';
 
 class Skills extends Component {
   render() {
     return (
       <div>
         <h3>Skills and Highlights</h3>
-        <form id='skills' onSubmit={this.props.onAdd}>
+        <form id='skills' className='skills' onSubmit={this.props.onAdd}>
           <input
             type='text'
             name='skillInput'
@@ -17,7 +18,7 @@ class Skills extends Component {
           />
           <button type='submit'>Add</button>
         </form>
-        <ul>
+        <ul className='skills'>
           {this.props.skillList.map((item) => {
             return (
               <div key={uniqid()}>

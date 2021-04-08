@@ -28,11 +28,12 @@ class References extends Component {
           />
           <h5>Phone Number</h5>
           <input
-            type='text'
+            type='tel'
             placeholder=''
             name='referencePhoneInput'
             onChange={this.props.handleChange}
             value={this.props.state.referencePhoneInput}
+            pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
             required
           />
           <button type='submit'>Add</button>
