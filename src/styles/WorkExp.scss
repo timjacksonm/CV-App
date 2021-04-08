@@ -1,4 +1,4 @@
-.education {
+.workexp {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +20,25 @@
       margin: 1em 0;
     }
   }
-  .educationAdded {
+  .descriptionList {
+    margin: 0;
+    padding: 0;
+    div {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      margin: 0.2rem !important;
+      border: 1px solid #000;
+
+      max-height: 35px;
+      max-width: 80%;
+      li {
+        overflow: auto;
+        word-wrap: normal;
+      }
+    }
+  }
+  .jobsAdded {
     position: relative;
     border: 1px solid #000;
     padding: 5px;
@@ -32,8 +50,8 @@
     }
   }
   ul {
-    padding: 0;
-    margin: 0;
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }

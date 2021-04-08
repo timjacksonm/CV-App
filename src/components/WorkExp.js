@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../styles/WorkExp.scss';
 
 class WorkExp extends Component {
   render() {
     return (
-      <div>
+      <div className='workexp'>
         <h3>Your Work Experience</h3>
-        <form id='workExp' onSubmit={this.props.onAdd}>
+        <form
+          id='workExp'
+          className='formQuestions'
+          onSubmit={this.props.onAdd}
+        >
           <h5>Company Name</h5>
           <input
             type='text'
@@ -63,7 +68,7 @@ class WorkExp extends Component {
           <button type='button' onClick={this.props.onAddDescription}>
             Add Description
           </button>
-          <ul>
+          <ul className='descriptionList'>
             {this.props.state.jobDuties.map((item) => {
               return (
                 <div key={uniqid()}>
@@ -85,14 +90,21 @@ class WorkExp extends Component {
           {this.props.jobList.map((item) => {
             return (
               <div key={uniqid()}>
-                <li
-                  key={uniqid()}
-                >{`Company Name:${item.Name} Title:${item.Title} Location:${item.Location} Start Date:${item.Start} End Date:${item.End} Description:${item.Description}`}</li>
-                <FontAwesomeIcon
-                  onClick={() => this.props.onDelete('workExp', item.Name)}
-                  key={uniqid()}
-                  icon='trash'
-                />
+                <li key={uniqid()} className='jobsAdded'>
+                  <ul>
+                    <li>{`Name: ${item.Name}`}</li>
+                    <li>{`Title: ${item.Title}`}</li>
+                    <li>{`Location: ${item.Location}`}</li>
+                    <li>{`Start: ${item.Start}`}</li>
+                    <li>{`End: ${item.End}`}</li>
+                    <li>{`Description: ${item.Description}`}</li>
+                  </ul>
+                  <FontAwesomeIcon
+                    onClick={() => this.props.onDelete('workExp', item.Name)}
+                    key={uniqid()}
+                    icon='trash'
+                  />
+                </li>
               </div>
             );
           })}

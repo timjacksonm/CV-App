@@ -200,7 +200,7 @@ class App extends Component {
         <header>
           <Title />
         </header>
-        <main className='form'>
+        <main className='formContainer'>
           <Profile />
           <Skills
             state={this.state}
