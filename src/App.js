@@ -68,11 +68,11 @@ class App extends Component {
               "input[name='eduDateInput']"
             ).value,
           }),
-          workNameInput: '',
-          workTitleInput: '',
-          workLocationInput: '',
-          workStartInput: '',
-          workEndInput: '',
+          eduNameInput: '',
+          eduLocationInput: '',
+          eduDegreeInput: '',
+          eduMajorInput: '',
+          eduDateInput: '',
         }));
         break;
       case 'workExp':
