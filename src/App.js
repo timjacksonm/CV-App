@@ -21,6 +21,7 @@ class App extends Component {
       education: [],
       jobs: [],
       jobDuties: [],
+      references: [],
       skillInput: '',
       eduNameInput: '',
       eduLocationInput: '',
@@ -33,6 +34,9 @@ class App extends Component {
       workStartInput: '',
       workEndInput: '',
       jobDescription: '',
+      referenceNameInput: '',
+      referenceRelationInput: '',
+      referencePhoneInput: '',
     };
   }
   handleChange = (e) => {
@@ -97,6 +101,24 @@ class App extends Component {
           jobDuties: [],
         }));
         break;
+      case 'references':
+        this.setState((prevState) => ({
+          references: prevState.references.concat({
+            Name: selectForm.querySelector("input[name='referenceNameInput']")
+              .value,
+            Relation: selectForm.querySelector(
+              "input[name='referenceRelationInput']"
+            ).value,
+            PhoneNumber: selectForm.querySelector(
+              "input[name='referencePhoneInput']"
+            ).value,
+          }),
+          referenceNameInput: '',
+          referenceRelationInput: '',
+          referencePhoneInput: '',
+        }));
+        break;
+
       default:
         console.log('there was an error in handleAdd');
         break;
@@ -146,7 +168,16 @@ class App extends Component {
           }),
         }));
         break;
-
+      case 'references':
+        this.setState((prevState) => ({
+          references: prevState.references.filter((index) => {
+            if (index !== reference) {
+              return true;
+            }
+            return false;
+          }),
+        }));
+        break;
       default:
         console.log('there was an error in handleDelete');
         break;
@@ -193,7 +224,14 @@ class App extends Component {
             onAddDescription={this.handleAddDescription}
             onDelete={this.handleDelete}
           />
-          <References />
+          <References
+            state={this.state}
+            handleChange={this.handleChange}
+            referencesList={this.state.references}
+            onAdd={this.handleAdd}
+            onAddDescription={this.handleAddDescription}
+            onDelete={this.handleDelete}
+          />
         </main>
         <footer>
           <Footer />
