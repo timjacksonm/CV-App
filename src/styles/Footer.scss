@@ -1,26 +1,26 @@
 .footer {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 12px;
-	padding: 0.1em 1em;
-	border: 1px solid #2c3e50;
-	border-radius: 15px;
-	margin: 0.5em;
-	div {
-		margin: 0.1em 0.2em;
-	}
-	a {
-		text-decoration: none;
-	}
-	.logo {
-		svg {
-			margin: 0px 0.2em;
-			width: 0.9rem;
-			height: 0.9rem;
-		}
-		:hover svg path {
-			fill: #25966b;
-		}
-	}
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 0.1em 1em;
+  border: 1px solid #2c3e50;
+  border-radius: 15px;
+  margin: 1em 0.5em 0.5em;
+  div {
+    margin: 0.1em 0.2em;
+  }
+  a {
+    text-decoration: none;
+  }
+  .logo {
+    svg {
+      margin: 0px 0.2em;
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    :hover svg path {
+      fill: #25966b;
+    }
+  }
 }

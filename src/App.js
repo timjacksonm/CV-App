@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
+import PrevBtn from './components/PrevBtn';
+import NextBtn from './components/NextBtn';
 import Title from './components/Title';
 import Profile from './components/Profile';
 import Skills from './components/Skills';
@@ -8,9 +10,13 @@ import WorkExp from './components/WorkExp';
 import References from './components/References';
 import Footer from './components/Footer';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrash,
+  faAngleRight,
+  faAngleLeft,
+} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faTrash);
+library.add(faTrash, faAngleRight, faAngleLeft);
 
 class App extends Component {
   constructor() {
@@ -198,7 +204,9 @@ class App extends Component {
           <div className='skewed'></div>
         </section>
         <header>
+          <PrevBtn />
           <Title />
+          <NextBtn />
         </header>
         <main className='formContainer'>
           <Profile />
