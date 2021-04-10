@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles/App.scss';
 import PrevBtn from './components/PrevBtn';
 import NextBtn from './components/NextBtn';
-import Title from './components/Title';
 import FakeDataBtn from './components/FakeDataBtn';
 import Profile from './components/Profile';
 import Skills from './components/Skills';
@@ -314,7 +313,7 @@ class App extends Component {
         </section>
         <header>
           <PrevBtn returnToEdit={this.showEditScreen} />
-          <Title />
+          <h1>Resume App</h1>
           <NextBtn createPreview={this.previewScreen} />
         </header>
         <main id='centerContent' className='formContainer'>

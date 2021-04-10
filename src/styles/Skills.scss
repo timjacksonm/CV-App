@@ -13,6 +13,11 @@
     display: flex;
     svg {
       margin: 0 0.5em;
+      &:hover {
+        path {
+          fill: #25966b;
+        }
+      }
     }
   }
 }

@@ -47,6 +47,11 @@
       top: 0;
       right: 0;
       margin: 5px;
+      &:hover {
+        path {
+          fill: #25966b;
+        }
+      }
     }
   }
   ul {
