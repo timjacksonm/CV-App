@@ -1,14 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function PrevBtn() {
+function PrevBtn(props) {
   return (
-    <div className='navBtns'>
-      <button>
-        <FontAwesomeIcon
-          onClick={() => console.log('test')}
-          icon='angle-left'
-        />
+    <div id='prevBtn' className='navBtns'>
+      <button onClick={props.returnToEdit}>
+        <FontAwesomeIcon icon='angle-left' />
         <div>Prev</div>
       </button>
     </div>

@@ -10,6 +10,7 @@ import Education from './components/Education';
 import WorkExp from './components/WorkExp';
 import References from './components/References';
 import Footer from './components/Footer';
+import Preview from './components/Preview';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faTrash,
@@ -205,12 +206,17 @@ class App extends Component {
     console.log(
       `${this.state.profileFirstName} ${this.state.profileLastName} ${this.state.profileEmail} ${this.state.profilePhoneNum}`
     );
+    document.getElementById('centerContent').classList = 'formContainer hidden';
+    // document.getElementById('prevBtn').classList = 'navBtns';
+    document.getElementById('preview').classList = 'preview';
+  };
+  showEditScreen = () => {
+    document.getElementById('centerContent').classList = 'formContainer';
+    // document.getElementById('prevBtn').classList = 'navBtns hidden';
+    document.getElementById('preview').classList = 'preview hidden';
   };
   exportToPDF = () => {
     console.log('PDF');
-  };
-  showEditScreen = () => {
-    console.log('show Edit');
   };
   johnDoe = () => {
     document.forms[0].querySelector("input[name='profileFirstName']").value =
@@ -312,7 +318,7 @@ class App extends Component {
           <Title />
           <NextBtn createPreview={this.previewScreen} />
         </header>
-        <main className='formContainer'>
+        <main id='centerContent' className='formContainer'>
           <FakeDataBtn AutoFillData={this.johnDoe} />
           <Profile handleChange={this.handleChange} />
           <Skills
@@ -346,6 +352,7 @@ class App extends Component {
             onDelete={this.handleDelete}
           />
         </main>
+        <Preview state={this.state} />
         <footer>
           <Footer />
         </footer>
