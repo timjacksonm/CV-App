@@ -202,13 +202,12 @@ class App extends Component {
     }));
   };
   previewScreen = () => {
-    document.getElementById('centerContent').classList = 'formContainer hidden';
-    // document.getElementById('prevBtn').classList = 'navBtns';
+    document.getElementById('centerContent').classList =
+      'formContainer hidden quickFadeOut';
     document.getElementById('preview').classList = 'preview';
   };
   showEditScreen = () => {
     document.getElementById('centerContent').classList = 'formContainer';
-    // document.getElementById('prevBtn').classList = 'navBtns hidden';
     document.getElementById('preview').classList = 'preview hidden';
   };
   exportToPDF = () => {

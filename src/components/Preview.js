@@ -5,7 +5,7 @@ import '../styles/Preview.scss';
 function Preview(props) {
   return (
     <div id='preview' className='preview hidden'>
-      <div id='cv' className='quickFade'>
+      <div id='cv' className='quickFadeIn'>
         <div className='mainDetails'>
           <div id='name'>
             {
@@ -54,11 +54,11 @@ function Preview(props) {
                 return (
                   <article key={uniqid()}>
                     <h2 key={uniqid()}>{item.Name}</h2>
+                    <h5>{item.Title}</h5>
                     <p
                       key={uniqid()}
                       className='subDetails'
                     >{`${item.Start} - ${item.End}`}</p>
-                    <h5>{item.Title}</h5>
                     <ul>
                       {item.Description.map((item) => {
                         return <li key={uniqid()}>{item}</li>;
