@@ -3,6 +3,7 @@ import './styles/App.scss';
 import PrevBtn from './components/PrevBtn';
 import NextBtn from './components/NextBtn';
 import Title from './components/Title';
+import FakeDataBtn from './components/FakeDataBtn';
 import Profile from './components/Profile';
 import Skills from './components/Skills';
 import Education from './components/Education';
@@ -28,6 +29,10 @@ class App extends Component {
       jobs: [],
       jobDuties: [],
       references: [],
+      profileFirstName: '',
+      profileLastName: '',
+      profileEmail: '',
+      profilePhoneNum: '',
       skillInput: '',
       eduNameInput: '',
       eduLocationInput: '',
@@ -196,6 +201,105 @@ class App extends Component {
       jobDuties: prevState.jobDuties.concat(reference),
     }));
   };
+  previewScreen = () => {
+    console.log(
+      `${this.state.profileFirstName} ${this.state.profileLastName} ${this.state.profileEmail} ${this.state.profilePhoneNum}`
+    );
+  };
+  exportToPDF = () => {
+    console.log('PDF');
+  };
+  showEditScreen = () => {
+    console.log('show Edit');
+  };
+  johnDoe = () => {
+    document.forms[0].querySelector("input[name='profileFirstName']").value =
+      'John';
+    document.forms[0].querySelector("input[name='profileLastName']").value =
+      'Doe';
+    document.forms[0].querySelector("input[name='profileEmail']").value =
+      'JohnDoe@gmail.com';
+    document.forms[0].querySelector("input[name='profilePhoneNum']").value =
+      '123-456-7890';
+    this.setState({
+      profileFirstName: 'John',
+      profileLastName: 'Doe',
+      profileEmail: 'JohnDoe@gmail.com',
+      profilePhoneNum: '123-456-7890',
+      skills: ['HTML', 'CSS', 'JavaScript'],
+      education: [
+        {
+          Name: 'Stanford University',
+          Location: 'Standford, CA',
+          Degree: 'BS',
+          Major: 'Computer Science',
+          DateCompleted: '2021-01-01',
+        },
+        {
+          Name: 'John Doe High School',
+          Location: 'Missing, CA',
+          Degree: 'High School Diploma',
+          Major: 'General Studies',
+          DateCompleted: '2011-01-01',
+        },
+      ],
+      jobs: [
+        {
+          Name: 'Job1',
+          Title: 'Software Engineer',
+          Location: 'Missing, CA',
+          Start: '01-01-2021',
+          End: '04-01-2021',
+          Description: [
+            'job description1',
+            'job description2',
+            'job description3',
+          ],
+        },
+        {
+          Name: 'Job2',
+          Title: 'Front end developer',
+          Location: 'Missing, CA',
+          Start: '01-01-2021',
+          End: '04-01-2021',
+          Description: [
+            'job description1',
+            'job description2',
+            'job description3',
+          ],
+        },
+        {
+          Name: 'Job3',
+          Title: 'Back end developer',
+          Location: 'Missing, CA',
+          Start: '01-01-2021',
+          End: '04-01-2021',
+          Description: [
+            'job description1',
+            'job description2',
+            'job description3',
+          ],
+        },
+      ],
+      references: [
+        {
+          Name: 'Jane Doe',
+          Relation: 'Wife',
+          PhoneNumber: '123-456-7890',
+        },
+        {
+          Name: 'Steve Doe',
+          Relation: 'Brother',
+          PhoneNumber: '098-654-3210',
+        },
+        {
+          Name: 'Tim Jackson',
+          Relation: 'Front end developer / associate',
+          PhoneNumber: '999-999-9999',
+        },
+      ],
+    });
+  };
   render() {
     console.log(this.state);
     return (
@@ -204,12 +308,13 @@ class App extends Component {
           <div className='skewed'></div>
         </section>
         <header>
-          <PrevBtn />
+          <PrevBtn returnToEdit={this.showEditScreen} />
           <Title />
-          <NextBtn />
+          <NextBtn createPreview={this.previewScreen} />
         </header>
         <main className='formContainer'>
-          <Profile />
+          <FakeDataBtn AutoFillData={this.johnDoe} />
+          <Profile handleChange={this.handleChange} />
           <Skills
             state={this.state}
             handleChange={this.handleChange}

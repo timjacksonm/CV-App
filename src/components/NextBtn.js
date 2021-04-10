@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function NextBtn() {
+function NextBtn(props) {
   return (
     <div className='navBtns'>
-      <button>
+      <button onClick={props.createPreview}>
         <div>Next</div>
         <FontAwesomeIcon
           onClick={() => console.log('test')}
