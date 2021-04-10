@@ -3,31 +3,34 @@ import uniqid from 'uniqid';
 import '../styles/Preview.scss';
 
 function Preview(props) {
-  console.log(props);
   return (
     <div id='preview' className='preview hidden'>
-      <div id='cv' className='instaFade'>
+      <div id='cv' className='quickFade'>
         <div className='mainDetails'>
           <div id='name'>
             {
-              <h1 className='quickFade delayTwo'>{`${props.state.profileFirstName} ${props.state.profileLastName}`}</h1>
+              <h1
+                key={uniqid()}
+              >{`${props.state.profileFirstName} ${props.state.profileLastName}`}</h1>
             }
           </div>
 
-          <div id='contactDetails' className='quickFade delayFour'>
+          <div id='contactDetails'>
             <ul>
               <li>
                 e:{' '}
-                <a href={props.state.profileEmail}>
-                  {props.state.profileEmail}
-                </a>
+                {
+                  <a key={uniqid()} href={props.state.profileEmail}>
+                    {props.state.profileEmail}
+                  </a>
+                }
               </li>
               <li>m: {props.state.profilePhoneNum}</li>
             </ul>
           </div>
         </div>
 
-        <div id='mainArea' className='quickFade delayFive'>
+        <div id='mainArea'>
           <section>
             <div className='sectionTitle'>
               <h1>Skills</h1>
@@ -36,7 +39,7 @@ function Preview(props) {
             <div className='sectionContent'>
               <ul className='keySkills'>
                 {props.state.skills.map((item) => {
-                  return <li>{item}</li>;
+                  return <li key={uniqid()}>{item}</li>;
                 })}
               </ul>
             </div>
@@ -49,13 +52,17 @@ function Preview(props) {
             <div className='sectionContent'>
               {props.state.jobs.map((item) => {
                 return (
-                  <article>
-                    <h2>{item.Name}</h2>
-                    <p className='subDetails'>{`${item.Start} ${item.End}`}</p>
+                  <article key={uniqid()}>
+                    <h2 key={uniqid()}>{item.Name}</h2>
+                    <p
+                      key={uniqid()}
+                      className='subDetails'
+                    >{`${item.Start} - ${item.End}`}</p>
+                    <h5>{item.Title}</h5>
                     <ul>
-                      {item.Description.map((item) => (
-                        <li key={uniqid()}>item</li>
-                      ))}
+                      {item.Description.map((item) => {
+                        return <li key={uniqid()}>{item}</li>;
+                      })}
                     </ul>
                   </article>
                 );
@@ -70,10 +77,14 @@ function Preview(props) {
             <div className='sectionContent'>
               {props.state.education.map((item) => {
                 return (
-                  <article>
-                    <h2>{item.Name}</h2>
-                    <p>{item.Major}</p>
-                    <p className='subDetails'>{`${item.Degree} ${item.DateCompleted}`}</p>
+                  <article key={uniqid()}>
+                    <h2 key={uniqid()}>{item.Name}</h2>
+                    <p>{item.Location}</p>
+                    <p key={uniqid()}>{item.Major}</p>
+                    <p
+                      key={uniqid()}
+                      className='subDetails'
+                    >{`${item.Degree} - Completed: ${item.DateCompleted}`}</p>
                   </article>
                 );
               })}
@@ -87,10 +98,12 @@ function Preview(props) {
             <div className='sectionContent'>
               {props.state.references.map((item) => {
                 return (
-                  <article>
-                    <h2>{item.Name}</h2>
-                    <p>{item.Relation}</p>
-                    <p className='subDetails'>{item.PhoneNumber}</p>
+                  <article key={uniqid()}>
+                    <h2 key={uniqid()}>{item.Name}</h2>
+                    <p key={uniqid()}>{item.Relation}</p>
+                    <p key={uniqid()} className='subDetails'>
+                      {item.PhoneNumber}
+                    </p>
                   </article>
                 );
               })}

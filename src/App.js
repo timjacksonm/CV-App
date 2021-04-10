@@ -203,9 +203,6 @@ class App extends Component {
     }));
   };
   previewScreen = () => {
-    console.log(
-      `${this.state.profileFirstName} ${this.state.profileLastName} ${this.state.profileEmail} ${this.state.profilePhoneNum}`
-    );
     document.getElementById('centerContent').classList = 'formContainer hidden';
     // document.getElementById('prevBtn').classList = 'navBtns';
     document.getElementById('preview').classList = 'preview';
@@ -232,82 +229,84 @@ class App extends Component {
       profileLastName: 'Doe',
       profileEmail: 'JohnDoe@gmail.com',
       profilePhoneNum: '123-456-7890',
-      skills: ['HTML', 'CSS', 'JavaScript'],
+      skills: [
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'C#',
+        'C++',
+        'Ruby',
+        'Python',
+        'Java',
+        'PHP',
+      ],
       education: [
         {
           Name: 'Stanford University',
           Location: 'Standford, CA',
-          Degree: 'BS',
+          Degree: 'Bachelor of Sciences (BS)',
           Major: 'Computer Science',
           DateCompleted: '2021-01-01',
-        },
-        {
-          Name: 'John Doe High School',
-          Location: 'Missing, CA',
-          Degree: 'High School Diploma',
-          Major: 'General Studies',
-          DateCompleted: '2011-01-01',
         },
       ],
       jobs: [
         {
-          Name: 'Job1',
+          Name: 'Facebook',
           Title: 'Software Engineer',
-          Location: 'Missing, CA',
+          Location: 'Menlo Park, CA',
           Start: '01-01-2021',
           End: '04-01-2021',
           Description: [
-            'job description1',
-            'job description2',
-            'job description3',
+            'Work closely with our product and design teams to build new and innovative application experiences for the iOS platform',
+            'Implement custom native user interfaces using the latest iOS programming techniques',
+            'Build reusable iOS software components for interfacing with our back-end platforms',
           ],
         },
         {
-          Name: 'Job2',
-          Title: 'Front end developer',
-          Location: 'Missing, CA',
+          Name: 'Google',
+          Title: 'Product Manager',
+          Location: 'Mountain View, CA',
           Start: '01-01-2021',
           End: '04-01-2021',
           Description: [
-            'job description1',
-            'job description2',
-            'job description3',
+            'Work collaboratively with engineering, marketing, legal, UX, and other teams on cutting edge technologies.',
+            'Understand markets, competition, and user requirements in depth.',
+            'Launch new products and features, test their performance, and iterate quickly.',
           ],
         },
         {
-          Name: 'Job3',
-          Title: 'Back end developer',
-          Location: 'Missing, CA',
+          Name: 'Tesla',
+          Title: 'Simulation Engineer',
+          Location: 'Grand Rapids, MI',
           Start: '01-01-2021',
           End: '04-01-2021',
           Description: [
-            'job description1',
-            'job description2',
-            'job description3',
+            'Lead design for manufacturing formability studies, working with the product designer to determine best tooling plan for all stamped parts.',
+            'ead tooling engineering team in developing formability plans and laying out tooling processes for sheet metal stamping parts – ranging from large Class A automotive parts to small progressive parts.',
+            'Use Autoform and/or PamStamp simulation software to setup and run formability feasibility studies on sheet metal stamping parts/processes. This includes the completion of all trim development and form compensations.',
           ],
         },
       ],
       references: [
         {
-          Name: 'Jane Doe',
-          Relation: 'Wife',
+          Name: 'Steve Jobs',
+          Relation: 'Mentor',
           PhoneNumber: '123-456-7890',
         },
         {
-          Name: 'Steve Doe',
-          Relation: 'Brother',
+          Name: 'Bill Gates',
+          Relation: 'Finance Manager',
           PhoneNumber: '098-654-3210',
         },
         {
           Name: 'Tim Jackson',
-          Relation: 'Front end developer / associate',
+          Relation: 'Best Friend',
           PhoneNumber: '999-999-9999',
         },
       ],
     });
   };
   render() {
-    console.log(this.state);
     return (
       <div className='content'>
         <section>
