@@ -10,6 +10,7 @@ import WorkExp from './components/WorkExp';
 import References from './components/References';
 import Footer from './components/Footer';
 import Preview from './components/Preview';
+import PdfBtn from './components/PrintPdf';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faTrash,
@@ -202,12 +203,12 @@ class App extends Component {
     }));
   };
   previewScreen = () => {
-    document.getElementById('centerContent').classList =
+    document.getElementById('formContainer').classList =
       'formContainer hidden quickFadeOut';
     document.getElementById('preview').classList = 'preview';
   };
   showEditScreen = () => {
-    document.getElementById('centerContent').classList = 'formContainer';
+    document.getElementById('formContainer').classList = 'formContainer';
     document.getElementById('preview').classList = 'preview hidden';
   };
   exportToPDF = () => {
@@ -312,44 +313,47 @@ class App extends Component {
         </section>
         <header>
           <PrevBtn returnToEdit={this.showEditScreen} />
+          {/* <PdfBtn state={this.state} /> */}
           <h1>Resume App</h1>
           <NextBtn createPreview={this.previewScreen} />
         </header>
-        <main id='centerContent' className='formContainer'>
-          <FakeDataBtn AutoFillData={this.johnDoe} />
-          <Profile handleChange={this.handleChange} />
-          <Skills
-            state={this.state}
-            handleChange={this.handleChange}
-            skillList={this.state.skills}
-            onAdd={this.handleAdd}
-            onDelete={this.handleDelete}
-          />
-          <Education
-            state={this.state}
-            handleChange={this.handleChange}
-            educationList={this.state.education}
-            onAdd={this.handleAdd}
-            onDelete={this.handleDelete}
-          />
-          <WorkExp
-            state={this.state}
-            handleChange={this.handleChange}
-            jobList={this.state.jobs}
-            onAdd={this.handleAdd}
-            onAddDescription={this.handleAddDescription}
-            onDelete={this.handleDelete}
-          />
-          <References
-            state={this.state}
-            handleChange={this.handleChange}
-            referencesList={this.state.references}
-            onAdd={this.handleAdd}
-            onAddDescription={this.handleAddDescription}
-            onDelete={this.handleDelete}
-          />
+        <main id='centerContent'>
+          <div id='formContainer' className='formContainer'>
+            <FakeDataBtn AutoFillData={this.johnDoe} />
+            <Profile handleChange={this.handleChange} />
+            <Skills
+              state={this.state}
+              handleChange={this.handleChange}
+              skillList={this.state.skills}
+              onAdd={this.handleAdd}
+              onDelete={this.handleDelete}
+            />
+            <Education
+              state={this.state}
+              handleChange={this.handleChange}
+              educationList={this.state.education}
+              onAdd={this.handleAdd}
+              onDelete={this.handleDelete}
+            />
+            <WorkExp
+              state={this.state}
+              handleChange={this.handleChange}
+              jobList={this.state.jobs}
+              onAdd={this.handleAdd}
+              onAddDescription={this.handleAddDescription}
+              onDelete={this.handleDelete}
+            />
+            <References
+              state={this.state}
+              handleChange={this.handleChange}
+              referencesList={this.state.references}
+              onAdd={this.handleAdd}
+              onAddDescription={this.handleAddDescription}
+              onDelete={this.handleDelete}
+            />
+          </div>
+          <Preview state={this.state} />
         </main>
-        <Preview state={this.state} />
         <footer>
           <Footer />
         </footer>

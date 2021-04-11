@@ -13,18 +13,12 @@ h5 {
   color: #444;
 }
 .preview {
-  width: 90%;
-  max-width: 800px;
-  background: #d5d8dc;
-  margin: 30px auto;
-  overflow: auto;
+  width: 100%;
+  width: 850px;
   font-size: 16px;
   z-index: 1;
   #cv {
-    width: 90%;
-    max-width: 800px;
     background: #f3f3f3;
-    margin: 5px auto;
     display: flex;
     flex-direction: column;
     .mainDetails {
@@ -59,7 +53,6 @@ h5 {
   #mainArea {
     display: flex;
     flex-direction: column;
-    padding: 0 40px;
     .keySkills {
       list-style-type: none;
       column-count: 3;
@@ -71,8 +64,8 @@ h5 {
       }
     }
     .sectionTitle {
-      float: left;
       width: 25%;
+      padding-left: 30px;
       h1 {
         font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
         font-style: italic;
@@ -82,8 +75,8 @@ h5 {
       }
     }
     .sectionContent {
-      float: right;
       width: 72.5%;
+      padding-right: 10px;
       h2 {
         font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
         font-weight: 400;
@@ -97,13 +90,18 @@ h5 {
       margin-bottom: 3px;
     }
     section {
+      display: flex;
       border-top: 1px solid #25966b;
       padding: 5px 0 0;
       &:first-child {
         border-top: 0;
       }
+      &:nth-child(3) {
+        padding: 5px 0 45px;
+      }
       &:last-child {
-        padding: 5 + px 0 10px;
+        padding: 10px;
+        border-bottom: 1px solid #25966b;
       }
     }
   }
