@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.df47c310.chunk.css",
-    "main.js": "/react-gh-pages/static/js/main.18c30074.chunk.js",
-    "main.js.map": "/react-gh-pages/static/js/main.18c30074.chunk.js.map",
-    "runtime-main.js": "/react-gh-pages/static/js/runtime-main.a713ec43.js",
-    "runtime-main.js.map": "/react-gh-pages/static/js/runtime-main.a713ec43.js.map",
-    "static/js/2.25350a61.chunk.js": "/react-gh-pages/static/js/2.25350a61.chunk.js",
-    "static/js/2.25350a61.chunk.js.map": "/react-gh-pages/static/js/2.25350a61.chunk.js.map",
-    "index.html": "/react-gh-pages/index.html",
-    "static/css/main.df47c310.chunk.css.map": "/react-gh-pages/static/css/main.df47c310.chunk.css.map",
-    "static/js/2.25350a61.chunk.js.LICENSE.txt": "/react-gh-pages/static/js/2.25350a61.chunk.js.LICENSE.txt",
-    "static/media/github-icon.04ed74f3.svg": "/react-gh-pages/static/media/github-icon.04ed74f3.svg",
-    "static/media/twitter.740c588f.svg": "/react-gh-pages/static/media/twitter.740c588f.svg"
+    "main.css": "/CV-App/static/css/main.df47c310.chunk.css",
+    "main.js": "/CV-App/static/js/main.18c30074.chunk.js",
+    "main.js.map": "/CV-App/static/js/main.18c30074.chunk.js.map",
+    "runtime-main.js": "/CV-App/static/js/runtime-main.c199bd5e.js",
+    "runtime-main.js.map": "/CV-App/static/js/runtime-main.c199bd5e.js.map",
+    "static/js/2.25350a61.chunk.js": "/CV-App/static/js/2.25350a61.chunk.js",
+    "static/js/2.25350a61.chunk.js.map": "/CV-App/static/js/2.25350a61.chunk.js.map",
+    "index.html": "/CV-App/index.html",
+    "static/css/main.df47c310.chunk.css.map": "/CV-App/static/css/main.df47c310.chunk.css.map",
+    "static/js/2.25350a61.chunk.js.LICENSE.txt": "/CV-App/static/js/2.25350a61.chunk.js.LICENSE.txt",
+    "static/media/github-icon.04ed74f3.svg": "/CV-App/static/media/github-icon.04ed74f3.svg",
+    "static/media/twitter.740c588f.svg": "/CV-App/static/media/twitter.740c588f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a713ec43.js",
+    "static/js/runtime-main.c199bd5e.js",
     "static/js/2.25350a61.chunk.js",
     "static/css/main.df47c310.chunk.css",
     "static/js/main.18c30074.chunk.js"
