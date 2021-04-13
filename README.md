@@ -20,11 +20,10 @@
 <details>
   <summary>Show Image</summary>
 
-![GIF demo](dist/images/)
+<image src="src/assets/resumeGIF.gif">
 
 The next couple images show responsive web design for multiple devices.
 
-<image src="src/assets/resumeGIF.gif">
 <image src="src/assets/s5preview.png">
 <image src="src/assets/ipadpreview.png">
 <image src="src/assets/ipadpropreview.png">
