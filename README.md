@@ -2,7 +2,7 @@
   <image src="src/assets/logoCVapp.png" width="50%"> 
 </h1>
 
-<h4 align="center">Resume/CV App. Create your own and export it to PDF! I used React, HTML, CSS, JavaScript for this project.</h4>
+<h4 align="center">Resume/CV App. Create your own and export it to PDF! I used React, HTML, SASS, JavaScript for this project.</h4>
 
 <p align="center">
   <a href="#screenshots">Screenshots</a> •
