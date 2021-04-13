@@ -1,11 +1,8 @@
 <h1 align="center">
-  <br>
-  Resume App
-  <br>
-  <image src="dist/images/" width="50%"> 
+  <image src="dist/images/logoCVapp.png" width="50%"> 
 </h1>
 
-<h4 align="center">Resume/CV App. Create your own and export it to PDF! I used JavaScript, HTML, and CSS React for this project.</h4>
+<h4 align="center">Resume/CV App. Create your own and export it to PDF! I used React, HTML, CSS, JavaScript for this project.</h4>
 
 <p align="center">
   <a href="#screenshots">Screenshots</a> •
@@ -25,9 +22,12 @@
 
 ![GIF demo](dist/images/)
 
-  <image src="dist/images/">
-  <image src="dist/images/">
-    <image src="dist/images/">
+The next couple images show responsive web design for multiple devices.
+
+<image src="dist/images/resumeGIF.gif">
+<image src="dist/images/s5preview.png">
+<image src="dist/images/ipadpreview.png">
+<image src="dist/images/ipadpropreview.png">
 </details>
 
 ## Goals:
@@ -47,7 +47,7 @@
 
 ## Summary
 
-To be written.
+My first create-react-app project. I really like how react binds to the dom with state and the use of props. Objects have been my favotire thing about javascript for awhile. So getting to utilize them in props is great! There are still a few known issues I have to find time to work on. Responsive web design isn't perfect once you get to the resume document screen. The export pdf button functionality works but it causes issues with sizing of other elements on the page. Will enable once I find time to fix.
 
 ## Author
 
