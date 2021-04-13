@@ -16,9 +16,11 @@ import {
   faTrash,
   faAngleRight,
   faAngleLeft,
+  faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faTrash, faAngleRight, faAngleLeft);
+library.add(faTrash, faAngleRight, faAngleLeft, faPaperclip);
 
 class App extends Component {
   constructor() {
@@ -314,7 +316,9 @@ class App extends Component {
         <header>
           <PrevBtn returnToEdit={this.showEditScreen} />
           {/* <PdfBtn state={this.state} /> */}
-          <h1>Resume App</h1>
+          <h1>
+            Resume App <FontAwesomeIcon icon='paperclip' />
+          </h1>
           <NextBtn createPreview={this.previewScreen} />
         </header>
         <main id='centerContent'>
