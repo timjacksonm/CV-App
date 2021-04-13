@@ -67,6 +67,14 @@ body {
     text-align: center;
     z-index: 1;
     color: #25966b;
+    button {
+      color: #d5d8dc;
+      background: #3f51b5;
+      &:hover {
+        color: #000;
+        background: #25966b;
+      }
+    }
   }
   main {
     background: #d5d8dc;
@@ -88,11 +96,7 @@ body {
 .hidden {
   display: none;
 }
-button {
-  color: #d5d8dc;
-  background: #3f51b5;
-  &:hover {
-    color: #000;
-    background: #25966b;
-  }
+button:hover {
+  color: #000;
+  background: #25966b;
 }
