@@ -1,5 +1,5 @@
 <h1 align="center">
-  <image src="dist/images/logoCVapp.png" width="50%"> 
+  <image src="src/assets/logoCVapp.png" width="50%"> 
 </h1>
 
 <h4 align="center">Resume/CV App. Create your own and export it to PDF! I used React, HTML, CSS, JavaScript for this project.</h4>
@@ -24,10 +24,10 @@
 
 The next couple images show responsive web design for multiple devices.
 
-<image src="dist/images/resumeGIF.gif">
-<image src="dist/images/s5preview.png">
-<image src="dist/images/ipadpreview.png">
-<image src="dist/images/ipadpropreview.png">
+<image src="src/assets/resumeGIF.gif">
+<image src="src/assets/s5preview.png">
+<image src="src/assets/ipadpreview.png">
+<image src="src/assets/ipadpropreview.png">
 </details>
 
 ## Goals:
