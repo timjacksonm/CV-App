@@ -9,7 +9,6 @@ import Education from './components/Education';
 import WorkExp from './components/WorkExp';
 import References from './components/References';
 import Footer from './components/Footer';
-import Preview from './components/Preview';
 import PdfBtn from './components/PrintPdf';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -206,12 +205,16 @@ class App extends Component {
   };
   previewScreen = () => {
     document.getElementById('formContainer').classList =
-      'formContainer hidden quickFadeOut';
-    document.getElementById('preview').classList = 'preview';
+      'formContainer removeDisplay quickFadeOut';
+    document.getElementById('previewContainer').classList = 'previewContainer';
+    document.getElementById('nextBtn').classList = 'navBtns hidden';
+    document.getElementById('prevBtn').classList = 'navBtns';
   };
   showEditScreen = () => {
     document.getElementById('formContainer').classList = 'formContainer';
-    document.getElementById('preview').classList = 'preview hidden';
+    document.getElementById('previewContainer').classList = 'removeDisplay';
+    document.getElementById('nextBtn').classList = 'navBtns';
+    document.getElementById('prevBtn').classList = 'navBtns hidden';
   };
   exportToPDF = () => {
     console.log('PDF');
@@ -315,13 +318,13 @@ class App extends Component {
         </section>
         <header>
           <PrevBtn returnToEdit={this.showEditScreen} />
-          {/* <PdfBtn state={this.state} /> */}
           <h1>
             Resume App <FontAwesomeIcon icon='paperclip' />
           </h1>
           <NextBtn createPreview={this.previewScreen} />
         </header>
         <main id='centerContent'>
+          <PdfBtn state={this.state} />
           <div id='formContainer' className='formContainer'>
             <FakeDataBtn AutoFillData={this.johnDoe} />
             <Profile handleChange={this.handleChange} />
@@ -356,7 +359,6 @@ class App extends Component {
               onDelete={this.handleDelete}
             />
           </div>
-          <Preview state={this.state} />
         </main>
         <footer>
           <Footer />

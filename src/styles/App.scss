@@ -28,20 +28,6 @@ body {
     transform-origin: top right;
     z-index: 0;
   }
-  .navBtns {
-    margin: 10px;
-    align-self: center;
-    z-index: 1;
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1rem;
-      div {
-        padding: 5px;
-      }
-    }
-  }
   .formContainer {
     position: relative;
     background-color: rgba(255, 255, 255, 0.7);
@@ -63,16 +49,26 @@ body {
   header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
     text-align: center;
+    width: 100%;
     z-index: 1;
     color: #25966b;
     button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
       color: #d5d8dc;
       background: #3f51b5;
+      margin-left: 2vw;
+      margin-right: 2vw;
       &:hover {
         color: #000;
         background: #25966b;
+      }
+      div {
+        padding: 5px;
       }
     }
   }
@@ -82,10 +78,15 @@ body {
     flex: 1;
     z-index: 1;
     overflow-y: auto;
-    .PdfButton {
-      position: absolute;
-      top: 0;
-      right: 0;
+    .previewContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      button {
+        padding: 5px;
+        margin: 5px;
+      }
     }
   }
   footer {
@@ -93,8 +94,11 @@ body {
     z-index: 1;
   }
 }
-.hidden {
+.removeDisplay {
   display: none;
+}
+.hidden {
+  visibility: hidden;
 }
 button:hover {
   color: #000;

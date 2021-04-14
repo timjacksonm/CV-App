@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-
 import Preview from './Preview';
 
 const PdfBtn = (props) => {
@@ -10,7 +9,7 @@ const PdfBtn = (props) => {
   });
 
   return (
-    <div className='navBtns'>
+    <div id='previewContainer' className='removeDisplay'>
       <Preview state={props.state} ref={componentRef} />
       <button onClick={handlePrint}>Export to PDF!</button>
     </div>

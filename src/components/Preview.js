@@ -5,7 +5,7 @@ import '../styles/Preview.scss';
 class Preview extends Component {
   render() {
     return (
-      <div id='preview' className='preview hidden'>
+      <div className='preview'>
         <div id='cv' className='quickFadeIn'>
           <div className='mainDetails'>
             <div id='name'>

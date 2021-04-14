@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function PrevBtn(props) {
   return (
-    <div id='prevBtn' className='navBtns'>
+    <div id='prevBtn' className='navBtns hidden'>
       <button onClick={props.returnToEdit}>
         <FontAwesomeIcon icon='angle-left' />
         <div>Prev</div>

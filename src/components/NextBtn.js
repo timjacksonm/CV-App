@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function NextBtn(props) {
   return (
-    <div className='navBtns'>
-      <button onClick={props.createPreview}>
+    <div id='nextBtn' className='navBtns'>
+      <button className='nextBtn' onClick={props.createPreview}>
         <div>Next</div>
         <FontAwesomeIcon
           onClick={() => console.log('test')}
