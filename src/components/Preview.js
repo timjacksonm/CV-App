@@ -7,7 +7,7 @@ class Preview extends Component {
     return (
       <div className='preview'>
         <div id='cv' className='quickFadeIn'>
-          <div className='mainDetails'>
+          <div className='titleDetails'>
             <div id='name'>
               {
                 <h1
