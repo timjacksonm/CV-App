@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/Education.scss';
 
 const Education = (props) => {
+  console.log(props);
   return (
     <div className='education'>
       <h3>Education and Training</h3>
@@ -14,7 +15,7 @@ const Education = (props) => {
           placeholder='Stanford University'
           name='eduNameInput'
           onChange={props.handleChange}
-          value={props.state.eduNameInput}
+          value={props.inputState.eduNameInput}
           required
         />
         <h5>School Location</h5>
@@ -23,7 +24,7 @@ const Education = (props) => {
           placeholder='Standford, CA'
           name='eduLocationInput'
           onChange={props.handleChange}
-          value={props.state.eduLocationInput}
+          value={props.inputState.eduLocationInput}
           required
         />
         <h5>Degree</h5>
@@ -32,7 +33,7 @@ const Education = (props) => {
           placeholder='BS'
           name='eduDegreeInput'
           onChange={props.handleChange}
-          value={props.state.eduDegreeInput}
+          value={props.inputState.eduDegreeInput}
           required
         />
         <h5>Major</h5>
@@ -41,7 +42,7 @@ const Education = (props) => {
           placeholder='Computer Science'
           name='eduMajorInput'
           onChange={props.handleChange}
-          value={props.state.eduMajorInput}
+          value={props.inputState.eduMajorInput}
           required
         />
         <h5>Completion Date</h5>
@@ -49,7 +50,7 @@ const Education = (props) => {
           type='date'
           name='eduDateInput'
           onChange={props.handleChange}
-          value={props.state.eduDateInput}
+          value={props.inputState.eduDateInput}
           required
         />
         <button type='submit'>Add</button>

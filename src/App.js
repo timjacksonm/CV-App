@@ -47,8 +47,9 @@ const App = (props) => {
         });
         break;
       case 'education':
-        setEducation((prevState) => ({
-          education: prevState.education.concat({
+        setEducation([
+          ...education,
+          {
             Name: selectForm.querySelector("input[name='eduNameInput']").value,
             Location: selectForm.querySelector("input[name='eduLocationInput']")
               .value,
@@ -59,13 +60,20 @@ const App = (props) => {
             DateCompleted: selectForm.querySelector(
               "input[name='eduDateInput']"
             ).value,
-          }),
+          },
+        ]);
+        setInput({
           eduNameInput: '',
-          eduLocationInput: '',
+        });
+        setInput({
           eduDegreeInput: '',
+        });
+        setInput({
           eduMajorInput: '',
+        });
+        setInput({
           eduDateInput: '',
-        }));
+        });
         break;
       case 'workExp':
         setJobs((prevState) => ({
@@ -127,14 +135,14 @@ const App = (props) => {
         break;
 
       case 'education':
-        setEducation((prevState) => ({
-          education: prevState.education.filter((index) => {
+        setEducation(
+          education.filter((index) => {
             if (index.Name !== reference) {
               return true;
             }
             return false;
-          }),
-        }));
+          })
+        );
         break;
       case 'workExp':
         setJobs((prevState) => ({
@@ -306,13 +314,13 @@ const App = (props) => {
             onAdd={handleAdd}
             onDelete={handleDelete}
           />
-          {/* <Education
-            state={education}
+          <Education
+            inputState={input}
             handleChange={handleChange}
             educationList={education}
             onAdd={handleAdd}
             onDelete={handleDelete}
-          /> */}
+          />
           {/* <WorkExp
             state={jobs}
             handleChange={handleChange}
