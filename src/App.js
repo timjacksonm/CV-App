@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './styles/App.scss';
 import PrevBtn from './components/PrevBtn';
 import NextBtn from './components/NextBtn';
@@ -21,58 +21,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 library.add(faTrash, faAngleRight, faAngleLeft, faPaperclip);
 
-class App extends Component {
-  constructor() {
-    super();
+const App = (props) => {
+  const [input, setInput] = useState('');
+  const [skills, setSkills] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [jobDuties, setJobDuties] = useState([]);
+  const [references, setReferences] = useState([]);
 
-    this.state = {
-      skills: [],
-      education: [],
-      jobs: [],
-      jobDuties: [],
-      references: [],
-      profileFirstName: '',
-      profileLastName: '',
-      profileEmail: '',
-      profilePhoneNum: '',
-      skillInput: '',
-      eduNameInput: '',
-      eduLocationInput: '',
-      eduDegreeInput: '',
-      eduMajorInput: '',
-      eduDateInput: '',
-      workNameInput: '',
-      workTitleInput: '',
-      workLocationInput: '',
-      workStartInput: '',
-      workEndInput: '',
-      jobDescription: '',
-      referenceNameInput: '',
-      referenceRelationInput: '',
-      referencePhoneInput: '',
-    };
-  }
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const value = e.target.value;
-    this.setState({
+    setInput({
       [e.target.name]: value,
     });
   };
-  handleAdd = (e) => {
+  const handleAdd = (e) => {
     e.preventDefault();
     const selectForm = e.target;
 
     switch (selectForm.id) {
       case 'skills':
-        this.setState((prevState) => ({
-          skillInput: '',
-          skills: prevState.skills.concat(
-            selectForm.querySelector('input').value
-          ),
-        }));
+        setSkills([...skills, selectForm.querySelector('input').value]);
+        setInput({
+          skillValue: '',
+        });
         break;
       case 'education':
-        this.setState((prevState) => ({
+        setEducation((prevState) => ({
           education: prevState.education.concat({
             Name: selectForm.querySelector("input[name='eduNameInput']").value,
             Location: selectForm.querySelector("input[name='eduLocationInput']")
@@ -93,7 +68,7 @@ class App extends Component {
         }));
         break;
       case 'workExp':
-        this.setState((prevState) => ({
+        setJobs((prevState) => ({
           jobs: prevState.jobs.concat({
             Name: selectForm.querySelector("input[name='workNameInput']").value,
             Title: selectForm.querySelector("input[name='workTitleInput']")
@@ -115,7 +90,7 @@ class App extends Component {
         }));
         break;
       case 'references':
-        this.setState((prevState) => ({
+        setReferences((prevState) => ({
           references: prevState.references.concat({
             Name: selectForm.querySelector("input[name='referenceNameInput']")
               .value,
@@ -137,22 +112,22 @@ class App extends Component {
         break;
     }
   };
-  handleDelete = (section, name) => {
+  const handleDelete = (section, name) => {
     const reference = name;
     switch (section) {
       case 'skills':
-        this.setState((prevState) => ({
-          skills: prevState.skills.filter((index) => {
+        setSkills(
+          skills.filter((index) => {
             if (index !== reference) {
               return true;
             }
             return false;
-          }),
-        }));
+          })
+        );
         break;
 
       case 'education':
-        this.setState((prevState) => ({
+        setEducation((prevState) => ({
           education: prevState.education.filter((index) => {
             if (index.Name !== reference) {
               return true;
@@ -162,7 +137,7 @@ class App extends Component {
         }));
         break;
       case 'workExp':
-        this.setState((prevState) => ({
+        setJobs((prevState) => ({
           jobs: prevState.jobs.filter((index) => {
             if (index.Name !== reference) {
               return true;
@@ -172,7 +147,7 @@ class App extends Component {
         }));
         break;
       case 'jobDuties':
-        this.setState((prevState) => ({
+        setJobDuties((prevState) => ({
           jobDuties: prevState.jobDuties.filter((index) => {
             if (index !== reference) {
               return true;
@@ -182,7 +157,7 @@ class App extends Component {
         }));
         break;
       case 'references':
-        this.setState((prevState) => ({
+        setReferences((prevState) => ({
           references: prevState.references.filter((index) => {
             if (index !== reference) {
               return true;
@@ -196,176 +171,171 @@ class App extends Component {
         break;
     }
   };
-  handleAddDescription = (e) => {
+  const handleAddDescription = (e) => {
     const reference = e.target.previousSibling.value;
-    this.setState((prevState) => ({
+    setJobDuties((prevState) => ({
       jobDescription: '',
       jobDuties: prevState.jobDuties.concat(reference),
     }));
   };
-  previewScreen = () => {
+  const previewScreen = () => {
     document.getElementById('formContainer').classList =
       'formContainer removeDisplay quickFadeOut';
     document.getElementById('previewContainer').classList = 'previewContainer';
     document.getElementById('nextBtn').classList = 'navBtns hidden';
     document.getElementById('prevBtn').classList = 'navBtns';
   };
-  showEditScreen = () => {
+  const showEditScreen = () => {
     document.getElementById('formContainer').classList = 'formContainer';
     document.getElementById('previewContainer').classList = 'removeDisplay';
     document.getElementById('nextBtn').classList = 'navBtns';
     document.getElementById('prevBtn').classList = 'navBtns hidden';
   };
-  exportToPDF = () => {
-    console.log('PDF');
-  };
-  johnDoe = () => {
-    document.forms[0].querySelector("input[name='profileFirstName']").value =
-      'John';
-    document.forms[0].querySelector("input[name='profileLastName']").value =
-      'Doe';
-    document.forms[0].querySelector("input[name='profileEmail']").value =
-      'JohnDoe@gmail.com';
-    document.forms[0].querySelector("input[name='profilePhoneNum']").value =
-      '123-456-7890';
-    this.setState({
-      profileFirstName: 'John',
-      profileLastName: 'Doe',
-      profileEmail: 'JohnDoe@gmail.com',
-      profilePhoneNum: '123-456-7890',
-      skills: [
-        'HTML',
-        'CSS',
-        'JavaScript',
-        'C#',
-        'C++',
-        'Ruby',
-        'Python',
-        'Java',
-        'PHP',
-      ],
-      education: [
-        {
-          Name: 'Stanford University',
-          Location: 'Standford, CA',
-          Degree: 'Bachelor of Sciences (BS)',
-          Major: 'Computer Science',
-          DateCompleted: '2021-01-01',
-        },
-      ],
-      jobs: [
-        {
-          Name: 'Facebook',
-          Title: 'Software Engineer',
-          Location: 'Menlo Park, CA',
-          Start: '01-01-2021',
-          End: '04-01-2021',
-          Description: [
-            'Work closely with our product and design teams to build new and innovative application experiences for the iOS platform',
-            'Implement custom native user interfaces using the latest iOS programming techniques',
-            'Build reusable iOS software components for interfacing with our back-end platforms',
-          ],
-        },
-        {
-          Name: 'Google',
-          Title: 'Product Manager',
-          Location: 'Mountain View, CA',
-          Start: '01-01-2021',
-          End: '04-01-2021',
-          Description: [
-            'Work collaboratively with engineering, marketing, legal, UX, and other teams on cutting edge technologies.',
-            'Understand markets, competition, and user requirements in depth.',
-            'Launch new products and features, test their performance, and iterate quickly.',
-          ],
-        },
-        {
-          Name: 'Tesla',
-          Title: 'Simulation Engineer',
-          Location: 'Grand Rapids, MI',
-          Start: '01-01-2021',
-          End: '04-01-2021',
-          Description: [
-            'Lead design for manufacturing formability studies, working with the product designer to determine best tooling plan for all stamped parts.',
-            'ead tooling engineering team in developing formability plans and laying out tooling processes for sheet metal stamping parts – ranging from large Class A automotive parts to small progressive parts.',
-            'Use Autoform and/or PamStamp simulation software to setup and run formability feasibility studies on sheet metal stamping parts/processes. This includes the completion of all trim development and form compensations.',
-          ],
-        },
-      ],
-      references: [
-        {
-          Name: 'Steve Jobs',
-          Relation: 'Mentor',
-          PhoneNumber: '123-456-7890',
-        },
-        {
-          Name: 'Bill Gates',
-          Relation: 'Finance Manager',
-          PhoneNumber: '098-654-3210',
-        },
-        {
-          Name: 'Tim Jackson',
-          Relation: 'Best Friend',
-          PhoneNumber: '999-999-9999',
-        },
-      ],
-    });
-  };
-  render() {
-    return (
-      <div className='content'>
-        <section>
-          <div className='skewed'></div>
-        </section>
-        <header>
-          <PrevBtn returnToEdit={this.showEditScreen} />
-          <h1>
-            Resume App <FontAwesomeIcon icon='paperclip' />
-          </h1>
-          <NextBtn createPreview={this.previewScreen} />
-        </header>
-        <main id='centerContent'>
-          <PdfBtn state={this.state} />
-          <div id='formContainer' className='formContainer'>
-            <FakeDataBtn AutoFillData={this.johnDoe} />
-            <Profile handleChange={this.handleChange} />
-            <Skills
-              state={this.state}
-              handleChange={this.handleChange}
-              skillList={this.state.skills}
-              onAdd={this.handleAdd}
-              onDelete={this.handleDelete}
-            />
-            <Education
-              state={this.state}
-              handleChange={this.handleChange}
-              educationList={this.state.education}
-              onAdd={this.handleAdd}
-              onDelete={this.handleDelete}
-            />
-            <WorkExp
-              state={this.state}
-              handleChange={this.handleChange}
-              jobList={this.state.jobs}
-              onAdd={this.handleAdd}
-              onAddDescription={this.handleAddDescription}
-              onDelete={this.handleDelete}
-            />
-            <References
-              state={this.state}
-              handleChange={this.handleChange}
-              referencesList={this.state.references}
-              onAdd={this.handleAdd}
-              onAddDescription={this.handleAddDescription}
-              onDelete={this.handleDelete}
-            />
-          </div>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
-    );
-  }
-}
+  // const johnDoe = () => {
+  //   document.forms[0].querySelector("input[name='profileFirstName']").value =
+  //     'John';
+  //   document.forms[0].querySelector("input[name='profileLastName']").value =
+  //     'Doe';
+  //   document.forms[0].querySelector("input[name='profileEmail']").value =
+  //     'JohnDoe@gmail.com';
+  //   document.forms[0].querySelector("input[name='profilePhoneNum']").value =
+  //     '123-456-7890';
+  //   setState({
+  //     profileFirstName: 'John',
+  //     profileLastName: 'Doe',
+  //     profileEmail: 'JohnDoe@gmail.com',
+  //     profilePhoneNum: '123-456-7890',
+  //     skills: [
+  //       'HTML',
+  //       'CSS',
+  //       'JavaScript',
+  //       'C#',
+  //       'C++',
+  //       'Ruby',
+  //       'Python',
+  //       'Java',
+  //       'PHP',
+  //     ],
+  //     education: [
+  //       {
+  //         Name: 'Stanford University',
+  //         Location: 'Standford, CA',
+  //         Degree: 'Bachelor of Sciences (BS)',
+  //         Major: 'Computer Science',
+  //         DateCompleted: '2021-01-01',
+  //       },
+  //     ],
+  //     jobs: [
+  //       {
+  //         Name: 'Facebook',
+  //         Title: 'Software Engineer',
+  //         Location: 'Menlo Park, CA',
+  //         Start: '01-01-2021',
+  //         End: '04-01-2021',
+  //         Description: [
+  //           'Work closely with our product and design teams to build new and innovative application experiences for the iOS platform',
+  //           'Implement custom native user interfaces using the latest iOS programming techniques',
+  //           'Build reusable iOS software components for interfacing with our back-end platforms',
+  //         ],
+  //       },
+  //       {
+  //         Name: 'Google',
+  //         Title: 'Product Manager',
+  //         Location: 'Mountain View, CA',
+  //         Start: '01-01-2021',
+  //         End: '04-01-2021',
+  //         Description: [
+  //           'Work collaboratively with engineering, marketing, legal, UX, and other teams on cutting edge technologies.',
+  //           'Understand markets, competition, and user requirements in depth.',
+  //           'Launch new products and features, test their performance, and iterate quickly.',
+  //         ],
+  //       },
+  //       {
+  //         Name: 'Tesla',
+  //         Title: 'Simulation Engineer',
+  //         Location: 'Grand Rapids, MI',
+  //         Start: '01-01-2021',
+  //         End: '04-01-2021',
+  //         Description: [
+  //           'Lead design for manufacturing formability studies, working with the product designer to determine best tooling plan for all stamped parts.',
+  //           'ead tooling engineering team in developing formability plans and laying out tooling processes for sheet metal stamping parts – ranging from large Class A automotive parts to small progressive parts.',
+  //           'Use Autoform and/or PamStamp simulation software to setup and run formability feasibility studies on sheet metal stamping parts/processes. This includes the completion of all trim development and form compensations.',
+  //         ],
+  //       },
+  //     ],
+  //     references: [
+  //       {
+  //         Name: 'Steve Jobs',
+  //         Relation: 'Mentor',
+  //         PhoneNumber: '123-456-7890',
+  //       },
+  //       {
+  //         Name: 'Bill Gates',
+  //         Relation: 'Finance Manager',
+  //         PhoneNumber: '098-654-3210',
+  //       },
+  //       {
+  //         Name: 'Tim Jackson',
+  //         Relation: 'Best Friend',
+  //         PhoneNumber: '999-999-9999',
+  //       },
+  //     ],
+  //   });
+  // };
+  return (
+    <div className='content'>
+      <section>
+        <div className='skewed'></div>
+      </section>
+      <header>
+        {/* <PrevBtn returnToEdit={showEditScreen} /> */}
+        <h1>
+          Resume App <FontAwesomeIcon icon='paperclip' />
+        </h1>
+        {/* <NextBtn createPreview={previewScreen} /> */}
+      </header>
+      <main id='centerContent'>
+        {/* <PdfBtn state={''} /> */}
+        <div id='formContainer' className='formContainer'>
+          {/* <FakeDataBtn AutoFillData={this.johnDoe} /> */}
+          <Profile handleChange={handleChange} />
+          <Skills
+            inputState={input}
+            handleChange={handleChange}
+            skillList={skills}
+            onAdd={handleAdd}
+            onDelete={handleDelete}
+          />
+          {/* <Education
+            state={education}
+            handleChange={handleChange}
+            educationList={education}
+            onAdd={handleAdd}
+            onDelete={handleDelete}
+          /> */}
+          {/* <WorkExp
+            state={jobs}
+            handleChange={handleChange}
+            jobList={jobs}
+            onAdd={handleAdd}
+            onAddDescription={handleAddDescription}
+            onDelete={handleDelete}
+          /> */}
+          {/* <References
+            state={references}
+            handleChange={handleChange}
+            referencesList={references}
+            onAdd={handleAdd}
+            onAddDescription={handleAddDescription}
+            onDelete={handleDelete}
+          /> */}
+        </div>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
+};
 
 export default App;
