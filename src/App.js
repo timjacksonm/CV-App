@@ -9,7 +9,7 @@ import Education from './components/Education';
 import WorkExp from './components/WorkExp';
 import References from './components/References';
 import Footer from './components/Footer';
-import PdfBtn from './components/PrintPdf';
+import Preview from './components/Preview';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faTrash,
@@ -305,7 +305,7 @@ const App = (props) => {
         <NextBtn createPreview={previewScreen} />
       </header>
       <main id='centerContent'>
-        <PdfBtn
+        <Preview
           profile={profile}
           skills={skills}
           education={education}
