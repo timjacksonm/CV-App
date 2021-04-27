@@ -7,10 +7,9 @@ const PdfBtn = (props) => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-
   return (
     <div id='previewContainer' className='removeDisplay'>
-      <Preview state={props.state} ref={componentRef} />
+      <Preview data={props} ref={componentRef} />
       <button onClick={handlePrint}>Export to PDF!</button>
     </div>
   );

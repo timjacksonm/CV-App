@@ -22,7 +22,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 library.add(faTrash, faAngleRight, faAngleLeft, faPaperclip);
 
 const App = (props) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState([]);
+  const [profile, setProfile] = useState('');
   const [skills, setSkills] = useState([]);
   const [education, setEducation] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -30,9 +31,7 @@ const App = (props) => {
   const [references, setReferences] = useState([]);
 
   const handleChange = (e) => {
-    setInput({
-      [e.target.name]: e.target.value,
-    });
+    setInput({ [e.target.name]: e.target.value });
   };
   const handleAdd = (e) => {
     e.preventDefault();
@@ -186,6 +185,13 @@ const App = (props) => {
     });
   };
   const previewScreen = () => {
+    const selectForm = document.forms.profile.children;
+    setProfile({
+      firstName: selectForm.firstName.value,
+      lastName: selectForm.lastName.value,
+      email: selectForm.email.value,
+      phoneNumber: selectForm.phoneNumber.value,
+    });
     document.getElementById('formContainer').classList =
       'formContainer removeDisplay quickFadeOut';
     document.getElementById('previewContainer').classList = 'previewContainer';
@@ -199,14 +205,17 @@ const App = (props) => {
     document.getElementById('prevBtn').classList = 'navBtns hidden';
   };
   const johnDoe = () => {
-    document.forms[0].querySelector("input[name='profileFirstName']").value =
-      'John';
-    document.forms[0].querySelector("input[name='profileLastName']").value =
-      'Doe';
-    document.forms[0].querySelector("input[name='profileEmail']").value =
-      'JohnDoe@gmail.com';
-    document.forms[0].querySelector("input[name='profilePhoneNum']").value =
-      '123-456-7890';
+    const selectForm = document.forms.profile.children;
+    selectForm.firstName.value = 'John';
+    selectForm.lastName.value = 'Doe';
+    selectForm.email.value = 'JohnDoe@gmail.com';
+    selectForm.phoneNumber.value = '123-456-7890';
+    setProfile({
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'JohnDoe@gmail.com',
+      phoneNumber: '123-456-7890',
+    });
     setSkills([
       'HTML',
       'CSS',
@@ -289,17 +298,23 @@ const App = (props) => {
         <div className='skewed'></div>
       </section>
       <header>
-        {/* <PrevBtn returnToEdit={showEditScreen} /> */}
+        <PrevBtn returnToEdit={showEditScreen} />
         <h1>
           Resume App <FontAwesomeIcon icon='paperclip' />
         </h1>
-        {/* <NextBtn createPreview={previewScreen} /> */}
+        <NextBtn createPreview={previewScreen} />
       </header>
       <main id='centerContent'>
-        {/* <PdfBtn state={''} /> */}
+        <PdfBtn
+          profile={profile}
+          skills={skills}
+          education={education}
+          jobs={jobs}
+          references={references}
+        />
         <div id='formContainer' className='formContainer'>
           <FakeDataBtn AutoFillData={johnDoe} />
-          <Profile handleChange={handleChange} />
+          <Profile handleChange={handleChange} inputState={input} />
           <Skills
             inputState={input}
             handleChange={handleChange}

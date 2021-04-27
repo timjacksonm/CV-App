@@ -5,32 +5,35 @@ const Profile = (props) => {
   return (
     <div>
       <h3>Personal Information</h3>
-      <form className='profile'>
+      <form id='profile' className='profile'>
         <input
           placeholder='First Name'
-          name='profileFirstName'
+          name='firstName'
           onChange={props.handleChange}
           type='text'
-          value={props.profileFirstName}
+          value={props.firstName}
         />
         <input
           placeholder='Last Name'
-          name='profileLastName'
+          name='lastName'
           onChange={props.handleChange}
           type='text'
+          value={props.lirstName}
         />
         <input
           placeholder='Email'
-          name='profileEmail'
+          name='email'
           onChange={props.handleChange}
           type='email'
+          value={props.email}
         />
         <input
           placeholder='Phone Number'
           type='tel'
           onChange={props.handleChange}
           pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
-          name='profilePhoneNum'
+          name='phoneNumber'
+          value={props.phoneNumber}
         />
       </form>
     </div>

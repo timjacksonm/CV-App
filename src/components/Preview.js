@@ -11,7 +11,7 @@ const Preview = (props) => {
             {
               <h1
                 key={uniqid()}
-              >{`${props.state.profileFirstName} ${props.state.profileLastName}`}</h1>
+              >{`${props.data.profile.firstName} ${props.data.profile.lastName}`}</h1>
             }
           </div>
 
@@ -20,12 +20,12 @@ const Preview = (props) => {
               <li>
                 e:{' '}
                 {
-                  <a key={uniqid()} href={props.state.profileEmail}>
-                    {props.state.profileEmail}
+                  <a key={uniqid()} href={props.data.profile.email}>
+                    {props.data.profile.email}
                   </a>
                 }
               </li>
-              <li>m: {props.state.profilePhoneNum}</li>
+              <li>m: {props.data.profile.phoneNumber}</li>
             </ul>
           </div>
         </div>
@@ -38,7 +38,7 @@ const Preview = (props) => {
 
             <div className='sectionContent'>
               <ul className='keySkills'>
-                {props.state.skills.map((item) => {
+                {props.data.skills.map((item) => {
                   return <li key={uniqid()}>{item}</li>;
                 })}
               </ul>
@@ -50,7 +50,7 @@ const Preview = (props) => {
               <h1>Work Experience</h1>
             </div>
             <div className='sectionContent'>
-              {props.state.jobs.map((item) => {
+              {props.data.jobs.map((item) => {
                 return (
                   <article key={uniqid()}>
                     <h2 key={uniqid()}>{item.Name}</h2>
@@ -75,7 +75,7 @@ const Preview = (props) => {
               <h1>Education</h1>
             </div>
             <div className='sectionContent'>
-              {props.state.education.map((item) => {
+              {props.data.education.map((item) => {
                 return (
                   <article key={uniqid()}>
                     <h2 key={uniqid()}>{item.Name}</h2>
@@ -96,7 +96,7 @@ const Preview = (props) => {
               <h1>References</h1>
             </div>
             <div className='sectionContent'>
-              {props.state.references.map((item) => {
+              {props.data.references.map((item) => {
                 return (
                   <article key={uniqid()}>
                     <h2 key={uniqid()}>{item.Name}</h2>
