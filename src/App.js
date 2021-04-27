@@ -95,8 +95,9 @@ const App = (props) => {
         setJobDuties([]);
         break;
       case 'references':
-        setReferences((prevState) => ({
-          references: prevState.references.concat({
+        setReferences([
+          ...references,
+          {
             Name: selectForm.querySelector("input[name='referenceNameInput']")
               .value,
             Relation: selectForm.querySelector(
@@ -105,11 +106,13 @@ const App = (props) => {
             PhoneNumber: selectForm.querySelector(
               "input[name='referencePhoneInput']"
             ).value,
-          }),
+          },
+        ]);
+        setInput({
           referenceNameInput: '',
           referenceRelationInput: '',
           referencePhoneInput: '',
-        }));
+        });
         break;
 
       default:
@@ -162,14 +165,14 @@ const App = (props) => {
         );
         break;
       case 'references':
-        setReferences((prevState) => ({
-          references: prevState.references.filter((index) => {
+        setReferences(
+          references.filter((index) => {
             if (index !== reference) {
               return true;
             }
             return false;
-          }),
-        }));
+          })
+        );
         break;
       default:
         console.log('there was an error in handleDelete');
@@ -326,14 +329,13 @@ const App = (props) => {
             onAddDescription={handleAddDescription}
             onDelete={handleDelete}
           />
-          {/* <References
-            state={references}
+          <References
+            inputState={input}
             handleChange={handleChange}
             referencesList={references}
             onAdd={handleAdd}
-            onAddDescription={handleAddDescription}
             onDelete={handleDelete}
-          /> */}
+          />
         </div>
       </main>
       <footer>

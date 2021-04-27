@@ -14,7 +14,7 @@ const References = (props) => {
           placeholder=''
           name='referenceNameInput'
           onChange={props.handleChange}
-          value={props.state.referenceNameInput}
+          value={props.inputState.referenceNameInput}
           required
         />
         <h5>Relation</h5>
@@ -23,7 +23,7 @@ const References = (props) => {
           placeholder=''
           name='referenceRelationInput'
           onChange={props.handleChange}
-          value={props.state.referenceRelationInput}
+          value={props.inputState.referenceRelationInput}
           required
         />
         <h5>Phone Number</h5>
@@ -32,7 +32,7 @@ const References = (props) => {
           placeholder=''
           name='referencePhoneInput'
           onChange={props.handleChange}
-          value={props.state.referencePhoneInput}
+          value={props.inputState.referencePhoneInput}
           // pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
           required
         />
