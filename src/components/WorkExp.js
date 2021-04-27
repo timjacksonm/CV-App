@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/WorkExp.scss';
 
 const WorkExp = (props) => {
-  console.log(props);
   return (
     <div className='workexp'>
       <h3>Your Work Experience</h3>
@@ -13,45 +12,45 @@ const WorkExp = (props) => {
         <input
           type='text'
           placeholder=''
-          name='workNameInput'
+          name='companyNameInput'
           onChange={props.handleChange}
-          value={props.state.workNameInput}
+          value={props.inputState.companyNameInput}
           required
         />
         <h5>Job Title</h5>
         <input
           type='text'
           placeholder=''
-          name='workTitleInput'
+          name='jobTitleInput'
           onChange={props.handleChange}
-          value={props.state.workTitleInput}
+          value={props.inputState.jobTitleInput}
           required
         />
         <h5>Job Location</h5>
         <input
           type='text'
           placeholder=''
-          name='workLocationInput'
+          name='jobLocationInput'
           onChange={props.handleChange}
-          value={props.state.workLocationInput}
+          value={props.inputState.jobLocationInput}
           required
         />
         <h5>Start Date</h5>
         <input
           type='date'
           placeholder=''
-          name='workStartInput'
+          name='startDateInput'
           onChange={props.handleChange}
-          value={props.state.workStartInput}
+          value={props.inputState.startDateInput}
           required
         />
         <h5>End Date</h5>
         <input
           type='date'
           placeholder=''
-          name='workEndInput'
+          name='endDateInput'
           onChange={props.handleChange}
-          value={props.state.workEndInput}
+          value={props.inputState.endDateInput}
           required
         />
         <h5>Job Responsibilities</h5>
@@ -59,13 +58,13 @@ const WorkExp = (props) => {
           type='text'
           name='jobDescription'
           onChange={props.handleChange}
-          value={props.state.jobDescription}
+          value={props.inputState.jobDescription}
         />
         <button type='button' onClick={props.onAddDescription}>
           Add Description
         </button>
         <ul className='descriptionList'>
-          {props.state.jobDuties.map((item) => {
+          {props.jobDuties.map((item) => {
             return (
               <div key={uniqid()}>
                 <li key={uniqid()}>{item}</li>

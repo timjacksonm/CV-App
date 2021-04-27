@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/Education.scss';
 
 const Education = (props) => {
-  console.log(props);
   return (
     <div className='education'>
       <h3>Education and Training</h3>

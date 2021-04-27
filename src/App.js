@@ -30,9 +30,8 @@ const App = (props) => {
   const [references, setReferences] = useState([]);
 
   const handleChange = (e) => {
-    const value = e.target.value;
     setInput({
-      [e.target.name]: value,
+      [e.target.name]: e.target.value,
     });
   };
   const handleAdd = (e) => {
@@ -64,38 +63,36 @@ const App = (props) => {
         ]);
         setInput({
           eduNameInput: '',
-        });
-        setInput({
+          eduLocationInput: '',
           eduDegreeInput: '',
-        });
-        setInput({
           eduMajorInput: '',
-        });
-        setInput({
           eduDateInput: '',
         });
         break;
       case 'workExp':
-        setJobs((prevState) => ({
-          jobs: prevState.jobs.concat({
-            Name: selectForm.querySelector("input[name='workNameInput']").value,
-            Title: selectForm.querySelector("input[name='workTitleInput']")
+        setJobs([
+          ...jobs,
+          {
+            Name: selectForm.querySelector("input[name='companyNameInput']")
               .value,
-            Location: selectForm.querySelector(
-              "input[name='workLocationInput']"
-            ).value,
-            Start: selectForm.querySelector("input[name='workStartInput']")
+            Title: selectForm.querySelector("input[name='jobTitleInput']")
               .value,
-            End: selectForm.querySelector("input[name='workEndInput']").value,
-            Description: prevState.jobDuties,
-          }),
-          workNameInput: '',
-          workTitleInput: '',
-          workLocationInput: '',
-          workStartInput: '',
-          workEndInput: '',
-          jobDuties: [],
-        }));
+            Location: selectForm.querySelector("input[name='jobLocationInput']")
+              .value,
+            Start: selectForm.querySelector("input[name='startDateInput']")
+              .value,
+            End: selectForm.querySelector("input[name='endDateInput']").value,
+            Description: jobDuties,
+          },
+        ]);
+        setInput({
+          companyNameInput: '',
+          jobTitleInput: '',
+          jobLocationInput: '',
+          startDateInput: '',
+          endDateInput: '',
+        });
+        setJobDuties([]);
         break;
       case 'references':
         setReferences((prevState) => ({
@@ -145,24 +142,24 @@ const App = (props) => {
         );
         break;
       case 'workExp':
-        setJobs((prevState) => ({
-          jobs: prevState.jobs.filter((index) => {
+        setJobs(
+          jobs.filter((index) => {
             if (index.Name !== reference) {
               return true;
             }
             return false;
-          }),
-        }));
+          })
+        );
         break;
       case 'jobDuties':
-        setJobDuties((prevState) => ({
-          jobDuties: prevState.jobDuties.filter((index) => {
+        setJobDuties(
+          jobDuties.filter((index) => {
             if (index !== reference) {
               return true;
             }
             return false;
-          }),
-        }));
+          })
+        );
         break;
       case 'references':
         setReferences((prevState) => ({
@@ -180,11 +177,10 @@ const App = (props) => {
     }
   };
   const handleAddDescription = (e) => {
-    const reference = e.target.previousSibling.value;
-    setJobDuties((prevState) => ({
+    setJobDuties([...jobDuties, e.target.previousSibling.value]);
+    setInput({
       jobDescription: '',
-      jobDuties: prevState.jobDuties.concat(reference),
-    }));
+    });
   };
   const previewScreen = () => {
     document.getElementById('formContainer').classList =
@@ -321,14 +317,15 @@ const App = (props) => {
             onAdd={handleAdd}
             onDelete={handleDelete}
           />
-          {/* <WorkExp
-            state={jobs}
+          <WorkExp
+            inputState={input}
             handleChange={handleChange}
             jobList={jobs}
+            jobDuties={jobDuties}
             onAdd={handleAdd}
             onAddDescription={handleAddDescription}
             onDelete={handleDelete}
-          /> */}
+          />
           {/* <References
             state={references}
             handleChange={handleChange}
