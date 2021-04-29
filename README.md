@@ -46,7 +46,7 @@ The next couple images show responsive web design for multiple devices.
 
 ## Summary
 
-My first create-react-app project. I really like how react binds to the dom with state and the use of props. Objects have been my favorite thing about javascript for awhile. So getting to utilize them in props is great! There are still a few known issues I have to find time to work on. Responsive web design isn't perfect once you get to the resume document screen. The export pdf button functionality works but it causes issues with sizing of other elements on the page. Will enable once I find time to fix.
+My first create-react-app project. I really like how react binds to the dom with state and the use of props. Objects have been my favorite thing about javascript for awhile. So getting to utilize them in props is great! I ended up reafactoring my project to use react hooks. This was pretty challenging but after taking on a section at a time I got it to work! Feel free to test the project out by clicking the live preview link above. On the form scren click auto fill to test the app out!
 
 ## Author
 
