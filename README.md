@@ -24,9 +24,20 @@
 
 The next couple images show responsive web design for multiple devices.
 
+---
+
 <image src="src/assets/s5preview.png">
+  
+---
+
 <image src="src/assets/ipadpreview.png">
+  
+---
+
 <image src="src/assets/ipadpropreview.png">
+  
+---
+
 </details>
 
 ## Goals:
