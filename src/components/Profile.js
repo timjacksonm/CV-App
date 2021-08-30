@@ -2,7 +2,8 @@ import React from 'react';
 import '../styles/Profile.scss';
 
 const Profile = (props) => {
-  const { handleChange, input } = props;
+  const { handleChange } = props;
+  const { firstName, lastName, email, phoneNumber } = props.input;
   return (
     <div>
       <h3>Personal Information</h3>
@@ -12,21 +13,21 @@ const Profile = (props) => {
           name="firstName"
           onChange={handleChange}
           type="text"
-          value={input.firstName}
+          value={firstName}
         />
         <input
           placeholder="Last Name"
           name="lastName"
           onChange={handleChange}
           type="text"
-          value={input.lastName}
+          value={lastName}
         />
         <input
           placeholder="Email"
           name="email"
           onChange={handleChange}
           type="email"
-          value={input.email}
+          value={email}
         />
         <input
           placeholder="Phone Number"
@@ -34,7 +35,7 @@ const Profile = (props) => {
           onChange={handleChange}
           pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
           name="phoneNumber"
-          value={input.phoneNumber}
+          value={phoneNumber}
         />
       </form>
     </div>

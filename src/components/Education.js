@@ -59,7 +59,9 @@ const Education = (props) => {
           value={completionDate}
           required
         />
-        <button type="submit">Add</button>
+        <button form="Education and Training" type="submit">
+          Add
+        </button>
       </form>
       <ul>
         {schools.map((school) => {

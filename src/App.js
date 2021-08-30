@@ -39,6 +39,9 @@ const App = () => {
     startDate: '',
     endDate: '',
     jobDescription: '',
+    referenceName: '',
+    referenceRelation: '',
+    referencePhonenumber: '',
   });
   const [profile, setProfile] = useState('');
   const [skills, setSkills] = useState([]);
@@ -52,7 +55,7 @@ const App = () => {
   };
   const handleAdd = (e) => {
     e.preventDefault();
-    const selectForm = e.target;
+
     switch (e.target.id) {
       case 'Skills and Highlights':
         setSkills([...skills, input.skillValue]);
@@ -103,24 +106,20 @@ const App = () => {
         setJobDuties([]);
         break;
 
-      case 'references':
+      case 'References':
         setReferences([
           ...references,
           {
-            Name: selectForm.querySelector("input[name='referenceNameInput']")
-              .value,
-            Relation: selectForm.querySelector(
-              "input[name='referenceRelationInput']"
-            ).value,
-            PhoneNumber: selectForm.querySelector(
-              "input[name='referencePhoneInput']"
-            ).value,
+            Name: input.referenceName,
+            Relation: input.referenceRelation,
+            PhoneNumber: input.referencePhonenumber,
           },
         ]);
         setInput({
-          referenceNameInput: '',
-          referenceRelationInput: '',
-          referencePhoneInput: '',
+          ...input,
+          referenceName: '',
+          referenceRelation: '',
+          referencePhonenumber: '',
         });
         break;
 
@@ -148,8 +147,12 @@ const App = () => {
         );
         break;
 
-      case 'references':
-        setReferences(references.filter((index) => index !== value));
+      case 'References':
+        setReferences(
+          references.filter(
+            (reference) => JSON.stringify(reference) !== JSON.stringify(value)
+          )
+        );
         break;
 
       default:
@@ -266,6 +269,7 @@ const App = () => {
       },
     ]);
   };
+
   return (
     <div className="content">
       <section>
@@ -314,11 +318,11 @@ const App = () => {
             setInput={setInput}
           />
           <References
-            inputState={input}
+            input={input}
             handleChange={handleChange}
-            referencesList={references}
-            onAdd={handleAdd}
-            onDelete={handleDelete}
+            references={references}
+            handleAdd={handleAdd}
+            handleDelete={handleDelete}
           />
         </div>
       </main>

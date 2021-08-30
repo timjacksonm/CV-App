@@ -4,56 +4,62 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/References.scss';
 
 const References = (props) => {
+  const { handleAdd, handleChange, handleDelete, references } = props;
+  const { referenceName, referenceRelation, referencePhonenumber } =
+    props.input;
   return (
-    <div className='references'>
+    <div className="references">
       <h3>References</h3>
-      <form id='references' className='formQuestions' onSubmit={props.onAdd}>
+      <form id="References" className="formQuestions" onSubmit={handleAdd}>
         <h5>Name</h5>
         <input
-          type='text'
-          placeholder=''
-          name='referenceNameInput'
-          onChange={props.handleChange}
-          value={props.inputState.referenceNameInput}
+          type="text"
+          placeholder=""
+          name="referenceName"
+          onChange={handleChange}
+          value={referenceName}
           required
         />
         <h5>Relation</h5>
         <input
-          type='text'
-          placeholder=''
-          name='referenceRelationInput'
-          onChange={props.handleChange}
-          value={props.inputState.referenceRelationInput}
+          type="text"
+          placeholder=""
+          name="referenceRelation"
+          onChange={handleChange}
+          value={referenceRelation}
           required
         />
         <h5>Phone Number</h5>
         <input
-          type='tel'
-          placeholder=''
-          name='referencePhoneInput'
-          onChange={props.handleChange}
-          value={props.inputState.referencePhoneInput}
+          type="tel"
+          placeholder=""
+          name="referencePhonenumber"
+          onChange={handleChange}
+          value={referencePhonenumber}
           // pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
           required
         />
-        <button type='submit'>Add</button>
+        <button form="References" type="submit">
+          Add
+        </button>
       </form>
       <ul>
-        {props.referencesList.map((item) => {
+        {references.map((item) => {
+          const { Name, Relation, PhoneNumber } = item;
           return (
             <div key={uniqid()}>
-              <li key={uniqid()} className='referencesAdded'>
+              <li key={uniqid()} className="referencesAdded">
                 <ul>
-                  <li>{`Name: ${item.Name}`}</li>
-                  <li>{`Relation: ${item.Relation}`}</li>
-                  <li>{`Phone #: ${item.PhoneNumber}`}</li>
+                  <li>{`Name: ${Name}`}</li>
+                  <li>{`Relation: ${Relation}`}</li>
+                  <li>{`Phone #: ${PhoneNumber}`}</li>
                 </ul>
                 <FontAwesomeIcon
                   onClick={() => {
-                    props.onDelete('references', item);
+                    handleDelete('References', item);
                   }}
                   key={uniqid()}
-                  icon='trash'
+                  icon="trash"
                 />
               </li>
             </div>

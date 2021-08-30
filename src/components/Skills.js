@@ -16,7 +16,9 @@ const Skills = (props) => {
           value={input.skillValue}
           required
         />
-        <button type="submit">Add</button>
+        <button form="Skills and Highlights" type="submit">
+          Add
+        </button>
       </form>
       <ul className="skills">
         {skills.map((skill) => {
