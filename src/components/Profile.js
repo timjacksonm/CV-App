@@ -2,38 +2,39 @@ import React from 'react';
 import '../styles/Profile.scss';
 
 const Profile = (props) => {
+  const { handleChange, input } = props;
   return (
     <div>
       <h3>Personal Information</h3>
-      <form id='profile' className='profile'>
+      <form id="profile" className="profile">
         <input
-          placeholder='First Name'
-          name='firstName'
-          onChange={props.handleChange}
-          type='text'
-          value={props.firstName}
+          placeholder="First Name"
+          name="firstName"
+          onChange={handleChange}
+          type="text"
+          value={input.firstName}
         />
         <input
-          placeholder='Last Name'
-          name='lastName'
-          onChange={props.handleChange}
-          type='text'
-          value={props.lirstName}
+          placeholder="Last Name"
+          name="lastName"
+          onChange={handleChange}
+          type="text"
+          value={input.lastName}
         />
         <input
-          placeholder='Email'
-          name='email'
-          onChange={props.handleChange}
-          type='email'
-          value={props.email}
+          placeholder="Email"
+          name="email"
+          onChange={handleChange}
+          type="email"
+          value={input.email}
         />
         <input
-          placeholder='Phone Number'
-          type='tel'
-          onChange={props.handleChange}
-          pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
-          name='phoneNumber'
-          value={props.phoneNumber}
+          placeholder="Phone Number"
+          type="tel"
+          onChange={handleChange}
+          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+          name="phoneNumber"
+          value={input.phoneNumber}
         />
       </form>
     </div>

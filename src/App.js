@@ -21,8 +21,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 library.add(faTrash, faAngleRight, faAngleLeft, faPaperclip);
 
-const App = (props) => {
-  const [input, setInput] = useState([]);
+const App = () => {
+  const [input, setInput] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+  });
   const [profile, setProfile] = useState('');
   const [skills, setSkills] = useState([]);
   const [education, setEducation] = useState([]);
@@ -31,7 +36,7 @@ const App = (props) => {
   const [references, setReferences] = useState([]);
 
   const handleChange = (e) => {
-    setInput({ [e.target.name]: e.target.value });
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
   const handleAdd = (e) => {
     e.preventDefault();
@@ -292,19 +297,20 @@ const App = (props) => {
       },
     ]);
   };
+  console.log(input);
   return (
-    <div className='content'>
+    <div className="content">
       <section>
-        <div className='skewed'></div>
+        <div className="skewed"></div>
       </section>
       <header>
         <PrevBtn returnToEdit={showEditScreen} />
         <h1>
-          Resume App <FontAwesomeIcon icon='paperclip' />
+          Resume App <FontAwesomeIcon icon="paperclip" />
         </h1>
         <NextBtn createPreview={previewScreen} />
       </header>
-      <main id='centerContent'>
+      <main id="centerContent">
         <Preview
           profile={profile}
           skills={skills}
@@ -312,9 +318,9 @@ const App = (props) => {
           jobs={jobs}
           references={references}
         />
-        <div id='formContainer' className='formContainer'>
+        <div id="formContainer" className="formContainer">
           <FakeDataBtn AutoFillData={johnDoe} />
-          <Profile handleChange={handleChange} inputState={input} />
+          <Profile handleChange={handleChange} input={input} />
           <Skills
             inputState={input}
             handleChange={handleChange}
