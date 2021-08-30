@@ -4,100 +4,133 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/WorkExp.scss';
 
 const WorkExp = (props) => {
+  const {
+    handleAdd,
+    handleChange,
+    handleDelete,
+    jobs,
+    jobDuties,
+    setJobDuties,
+    setInput,
+    input,
+  } = props;
+  const {
+    companyName,
+    jobTitle,
+    jobLocation,
+    startDate,
+    endDate,
+    jobDescription,
+  } = props.input;
+
+  const addJobResponsibility = () => {
+    setJobDuties([...jobDuties, input.jobDescription]);
+    setInput({ ...input, jobDescription: '' });
+  };
+
+  const deleteJobResponsibility = (value) => {
+    setJobDuties(jobDuties.filter((index) => index !== value));
+  };
+
   return (
-    <div className='workexp'>
+    <div className="workexp">
       <h3>Your Work Experience</h3>
-      <form id='workExp' className='formQuestions' onSubmit={props.onAdd}>
+      <form
+        id="Your Work Experience"
+        className="formQuestions"
+        onSubmit={handleAdd}
+      >
         <h5>Company Name</h5>
         <input
-          type='text'
-          placeholder=''
-          name='companyNameInput'
-          onChange={props.handleChange}
-          value={props.inputState.companyNameInput}
+          type="text"
+          placeholder=""
+          name="companyName"
+          onChange={handleChange}
+          value={companyName}
           required
         />
         <h5>Job Title</h5>
         <input
-          type='text'
-          placeholder=''
-          name='jobTitleInput'
-          onChange={props.handleChange}
-          value={props.inputState.jobTitleInput}
+          type="text"
+          placeholder=""
+          name="jobTitle"
+          onChange={handleChange}
+          value={jobTitle}
           required
         />
         <h5>Job Location</h5>
         <input
-          type='text'
-          placeholder=''
-          name='jobLocationInput'
-          onChange={props.handleChange}
-          value={props.inputState.jobLocationInput}
+          type="text"
+          placeholder=""
+          name="jobLocation"
+          onChange={handleChange}
+          value={jobLocation}
           required
         />
         <h5>Start Date</h5>
         <input
-          type='date'
-          placeholder=''
-          name='startDateInput'
-          onChange={props.handleChange}
-          value={props.inputState.startDateInput}
+          type="date"
+          placeholder=""
+          name="startDate"
+          onChange={handleChange}
+          value={startDate}
           required
         />
         <h5>End Date</h5>
         <input
-          type='date'
-          placeholder=''
-          name='endDateInput'
-          onChange={props.handleChange}
-          value={props.inputState.endDateInput}
+          type="date"
+          placeholder=""
+          name="endDate"
+          onChange={handleChange}
+          value={endDate}
           required
         />
         <h5>Job Responsibilities</h5>
         <input
-          type='text'
-          name='jobDescription'
-          onChange={props.handleChange}
-          value={props.inputState.jobDescription}
+          type="text"
+          name="jobDescription"
+          onChange={handleChange}
+          value={jobDescription}
         />
-        <button type='button' onClick={props.onAddDescription}>
+        <button type="button" onClick={addJobResponsibility}>
           Add Description
         </button>
-        <ul className='descriptionList'>
-          {props.jobDuties.map((item) => {
+        <ul className="descriptionList">
+          {jobDuties.map((item) => {
             return (
               <div key={uniqid()}>
                 <li key={uniqid()}>{item}</li>
                 <FontAwesomeIcon
-                  onClick={() => props.onDelete('jobDuties', item)}
+                  onClick={() => deleteJobResponsibility(item)}
                   key={uniqid()}
-                  icon='trash'
+                  icon="trash"
                 />
               </div>
             );
           })}
         </ul>
-        <button form='workExp' type='submit'>
+        <button form="Your Work Experience" type="submit">
           Add Job
         </button>
       </form>
       <ul>
-        {props.jobList.map((item) => {
+        {jobs.map((item) => {
+          const { Name, Title, Location, Start, End, Description } = item;
           return (
             <div key={uniqid()}>
-              <li key={uniqid()} className='jobsAdded'>
+              <li key={uniqid()} className="jobsAdded">
                 <ul>
-                  <li>{`Name: ${item.Name}`}</li>
-                  <li>{`Title: ${item.Title}`}</li>
-                  <li>{`Location: ${item.Location}`}</li>
-                  <li>{`Start: ${item.Start}`}</li>
-                  <li>{`End: ${item.End}`}</li>
-                  <li>{`Description: ${item.Description}`}</li>
+                  <li>{`Name: ${Name}`}</li>
+                  <li>{`Title: ${Title}`}</li>
+                  <li>{`Location: ${Location}`}</li>
+                  <li>{`Start: ${Start}`}</li>
+                  <li>{`End: ${End}`}</li>
+                  <li>{`Description: ${Description}`}</li>
                 </ul>
                 <FontAwesomeIcon
-                  onClick={() => props.onDelete('workExp', item.Name)}
+                  onClick={() => handleDelete('Your Work Experience', item)}
                   key={uniqid()}
-                  icon='trash'
+                  icon="trash"
                 />
               </li>
             </div>

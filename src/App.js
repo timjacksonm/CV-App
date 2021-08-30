@@ -33,6 +33,12 @@ const App = () => {
     degree: '',
     major: '',
     completionDate: '',
+    companyName: '',
+    jobTitle: '',
+    jobLocation: '',
+    startDate: '',
+    endDate: '',
+    jobDescription: '',
   });
   const [profile, setProfile] = useState('');
   const [skills, setSkills] = useState([]);
@@ -74,31 +80,29 @@ const App = () => {
         });
         break;
 
-      case 'workExp':
+      case 'Your Work Experience':
         setJobs([
           ...jobs,
           {
-            Name: selectForm.querySelector("input[name='companyNameInput']")
-              .value,
-            Title: selectForm.querySelector("input[name='jobTitleInput']")
-              .value,
-            Location: selectForm.querySelector("input[name='jobLocationInput']")
-              .value,
-            Start: selectForm.querySelector("input[name='startDateInput']")
-              .value,
-            End: selectForm.querySelector("input[name='endDateInput']").value,
+            Name: input.companyName,
+            Title: input.jobTitle,
+            Location: input.jobLocation,
+            Start: input.startDate,
+            End: input.endDate,
             Description: jobDuties,
           },
         ]);
         setInput({
-          companyNameInput: '',
-          jobTitleInput: '',
-          jobLocationInput: '',
-          startDateInput: '',
-          endDateInput: '',
+          ...input,
+          companyName: '',
+          jobTitle: '',
+          jobLocation: '',
+          startDate: '',
+          endDate: '',
         });
         setJobDuties([]);
         break;
+
       case 'references':
         setReferences([
           ...references,
@@ -138,12 +142,10 @@ const App = () => {
           )
         );
         break;
-      case 'workExp':
-        setJobs(jobs.filter((index) => index !== value));
-        break;
-
-      case 'jobDuties':
-        setJobDuties(jobDuties.filter((index) => index !== value));
+      case 'Your Work Experience':
+        setJobs(
+          jobs.filter((job) => JSON.stringify(job) !== JSON.stringify(value))
+        );
         break;
 
       case 'references':
@@ -155,12 +157,7 @@ const App = () => {
         break;
     }
   };
-  const handleAddDescription = (e) => {
-    setJobDuties([...jobDuties, e.target.previousSibling.value]);
-    setInput({
-      jobDescription: '',
-    });
-  };
+
   const previewScreen = () => {
     const selectForm = document.forms.profile.children;
     setProfile({
@@ -307,13 +304,14 @@ const App = () => {
             handleDelete={handleDelete}
           />
           <WorkExp
-            inputState={input}
+            input={input}
             handleChange={handleChange}
-            jobList={jobs}
+            jobs={jobs}
             jobDuties={jobDuties}
-            onAdd={handleAdd}
-            onAddDescription={handleAddDescription}
-            onDelete={handleDelete}
+            handleAdd={handleAdd}
+            handleDelete={handleDelete}
+            setJobDuties={setJobDuties}
+            setInput={setInput}
           />
           <References
             inputState={input}
