@@ -162,12 +162,11 @@ const App = () => {
   };
 
   const previewScreen = () => {
-    const selectForm = document.forms.profile.children;
     setProfile({
-      firstName: selectForm.firstName.value,
-      lastName: selectForm.lastName.value,
-      email: selectForm.email.value,
-      phoneNumber: selectForm.phoneNumber.value,
+      firstName: input.firstName,
+      lastName: input.lastName,
+      email: input.email,
+      phoneNumber: input.phoneNumber,
     });
     document.getElementById('formContainer').classList =
       'formContainer removeDisplay quickFadeOut';
@@ -180,94 +179,6 @@ const App = () => {
     document.getElementById('previewContainer').classList = 'removeDisplay';
     document.getElementById('nextBtn').classList = 'navBtns';
     document.getElementById('prevBtn').classList = 'navBtns hidden';
-  };
-  const johnDoe = () => {
-    const selectForm = document.forms.profile.children;
-    selectForm.firstName.value = 'John';
-    selectForm.lastName.value = 'Doe';
-    selectForm.email.value = 'JohnDoe@gmail.com';
-    selectForm.phoneNumber.value = '123-456-7890';
-    setProfile({
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'JohnDoe@gmail.com',
-      phoneNumber: '123-456-7890',
-    });
-    setSkills([
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'C#',
-      'C++',
-      'Ruby',
-      'Python',
-      'Java',
-      'PHP',
-    ]);
-    setEducation([
-      {
-        Name: 'Stanford University',
-        Location: 'Standford, CA',
-        Degree: 'Bachelor of Sciences (BS)',
-        Major: 'Computer Science',
-        DateCompleted: '2021-01-01',
-      },
-    ]);
-    setJobs([
-      {
-        Name: 'Facebook',
-        Title: 'Software Engineer',
-        Location: 'Menlo Park, CA',
-        Start: '01-01-2021',
-        End: '04-01-2021',
-        Description: [
-          'Work closely with our product and design teams to build new and innovative application experiences for the iOS platform',
-          'Implement custom native user interfaces using the latest iOS programming techniques',
-          'Build reusable iOS software components for interfacing with our back-end platforms',
-        ],
-      },
-      {
-        Name: 'Google',
-        Title: 'Product Manager',
-        Location: 'Mountain View, CA',
-        Start: '01-01-2021',
-        End: '04-01-2021',
-        Description: [
-          'Work collaboratively with engineering, marketing, legal, UX, and other teams on cutting edge technologies.',
-          'Understand markets, competition, and user requirements in depth.',
-          'Launch new products and features, test their performance, and iterate quickly.',
-        ],
-      },
-      {
-        Name: 'Tesla',
-        Title: 'Simulation Engineer',
-        Location: 'Grand Rapids, MI',
-        Start: '01-01-2021',
-        End: '04-01-2021',
-        Description: [
-          'Lead design for manufacturing formability studies, working with the product designer to determine best tooling plan for all stamped parts.',
-          'ead tooling engineering team in developing formability plans and laying out tooling processes for sheet metal stamping parts – ranging from large Class A automotive parts to small progressive parts.',
-          'Use Autoform and/or PamStamp simulation software to setup and run formability feasibility studies on sheet metal stamping parts/processes. This includes the completion of all trim development and form compensations.',
-        ],
-      },
-    ]);
-    setReferences([
-      {
-        Name: 'Steve Jobs',
-        Relation: 'Mentor',
-        PhoneNumber: '123-456-7890',
-      },
-      {
-        Name: 'Bill Gates',
-        Relation: 'Finance Manager',
-        PhoneNumber: '098-654-3210',
-      },
-      {
-        Name: 'Tim Jackson',
-        Relation: 'Best Friend',
-        PhoneNumber: '999-999-9999',
-      },
-    ]);
   };
 
   return (
@@ -291,7 +202,14 @@ const App = () => {
           references={references}
         />
         <div id="formContainer" className="formContainer">
-          <FakeDataBtn AutoFillData={johnDoe} />
+          <FakeDataBtn
+            input={input}
+            setInput={setInput}
+            setSkills={setSkills}
+            setEducation={setEducation}
+            setJobs={setJobs}
+            setReferences={setReferences}
+          />
           <Profile handleChange={handleChange} input={input} />
           <Skills
             input={input}
