@@ -4,28 +4,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/Skills.scss';
 
 const Skills = (props) => {
+  const { handleChange, handleAdd, handleDelete, input, skills } = props;
   return (
     <div>
       <h3>Skills and Highlights</h3>
-      <form id='skills' className='skills' onSubmit={props.onAdd}>
+      <form id="skills" className="skills" onSubmit={handleAdd}>
         <input
-          type='text'
-          name='skillValue'
-          onChange={props.handleChange}
-          value={props.inputState.skillValue}
+          type="text"
+          name="skillValue"
+          onChange={handleChange}
+          value={input.skillValue}
           required
         />
-        <button type='submit'>Add</button>
+        <button type="submit">Add</button>
       </form>
-      <ul className='skills'>
-        {props.skillList.map((item) => {
+      <ul className="skills">
+        {skills.map((skill) => {
           return (
             <div key={uniqid()}>
-              <li key={uniqid()}>{item}</li>
+              <li key={uniqid()}>{skill}</li>
               <FontAwesomeIcon
-                onClick={() => props.onDelete('skills', item)}
+                onClick={(e) => handleDelete('Skills and Highlights', skill)}
                 key={uniqid()}
-                icon='trash'
+                icon="trash"
               />
             </div>
           );

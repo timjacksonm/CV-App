@@ -27,6 +27,7 @@ const App = () => {
     lastName: '',
     email: '',
     phoneNumber: '',
+    skillValue: '',
   });
   const [profile, setProfile] = useState('');
   const [skills, setSkills] = useState([]);
@@ -40,14 +41,12 @@ const App = () => {
   };
   const handleAdd = (e) => {
     e.preventDefault();
+    console.log(e.target);
     const selectForm = e.target;
-
-    switch (selectForm.id) {
+    switch (e.target.id) {
       case 'skills':
-        setSkills([...skills, selectForm.querySelector('input').value]);
-        setInput({
-          skillValue: '',
-        });
+        setSkills([...skills, input.skillValue]);
+        setInput({ ...input, [e.target[0].name]: '' });
         break;
       case 'education':
         setEducation([
@@ -124,60 +123,27 @@ const App = () => {
         break;
     }
   };
-  const handleDelete = (section, name) => {
-    const reference = name;
+  const handleDelete = (section, value) => {
     switch (section) {
-      case 'skills':
-        setSkills(
-          skills.filter((index) => {
-            if (index !== reference) {
-              return true;
-            }
-            return false;
-          })
-        );
+      case 'Skills and Highlights':
+        setSkills(skills.filter((skill) => skill !== value));
         break;
 
       case 'education':
-        setEducation(
-          education.filter((index) => {
-            if (index.Name !== reference) {
-              return true;
-            }
-            return false;
-          })
-        );
+        setEducation(education.filter((index) => index !== value));
         break;
       case 'workExp':
-        setJobs(
-          jobs.filter((index) => {
-            if (index.Name !== reference) {
-              return true;
-            }
-            return false;
-          })
-        );
+        setJobs(jobs.filter((index) => index !== value));
         break;
+
       case 'jobDuties':
-        setJobDuties(
-          jobDuties.filter((index) => {
-            if (index !== reference) {
-              return true;
-            }
-            return false;
-          })
-        );
+        setJobDuties(jobDuties.filter((index) => index !== value));
         break;
+
       case 'references':
-        setReferences(
-          references.filter((index) => {
-            if (index !== reference) {
-              return true;
-            }
-            return false;
-          })
-        );
+        setReferences(references.filter((index) => index !== value));
         break;
+
       default:
         console.log('there was an error in handleDelete');
         break;
@@ -322,11 +288,11 @@ const App = () => {
           <FakeDataBtn AutoFillData={johnDoe} />
           <Profile handleChange={handleChange} input={input} />
           <Skills
-            inputState={input}
+            input={input}
             handleChange={handleChange}
-            skillList={skills}
-            onAdd={handleAdd}
-            onDelete={handleDelete}
+            skills={skills}
+            handleAdd={handleAdd}
+            handleDelete={handleDelete}
           />
           <Education
             inputState={input}
