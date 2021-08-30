@@ -4,67 +4,66 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/Education.scss';
 
 const Education = (props) => {
-  const { onAdd, handleChange, educationList, onDelete } = props;
-  const {
-    eduNameInput,
-    eduLocationInput,
-    eduDegreeInput,
-    eduMajorInput,
-    eduDateInput,
-  } = props.inputState;
+  const { handleAdd, handleChange, handleDelete, schools } = props;
+  const { schoolName, schoolLocation, degree, major, completionDate } =
+    props.input;
   return (
     <div className="education">
       <h3>Education and Training</h3>
-      <form id="education" className="formQuestions" onSubmit={onAdd}>
+      <form
+        id="Education and Training"
+        className="formQuestions"
+        onSubmit={handleAdd}
+      >
         <h5>School Name</h5>
         <input
           type="text"
           placeholder="Stanford University"
-          name="eduNameInput"
+          name="schoolName"
           onChange={handleChange}
-          value={eduNameInput}
+          value={schoolName}
           required
         />
         <h5>School Location</h5>
         <input
           type="text"
           placeholder="Standford, CA"
-          name="eduLocationInput"
+          name="schoolLocation"
           onChange={handleChange}
-          value={eduLocationInput}
+          value={schoolLocation}
           required
         />
         <h5>Degree</h5>
         <input
           type="text"
           placeholder="BS"
-          name="eduDegreeInput"
+          name="degree"
           onChange={handleChange}
-          value={eduDegreeInput}
+          value={degree}
           required
         />
         <h5>Major</h5>
         <input
           tpye="text"
           placeholder="Computer Science"
-          name="eduMajorInput"
+          name="major"
           onChange={handleChange}
-          value={eduMajorInput}
+          value={major}
           required
         />
         <h5>Completion Date</h5>
         <input
           type="date"
-          name="eduDateInput"
+          name="completionDate"
           onChange={handleChange}
-          value={eduDateInput}
+          value={completionDate}
           required
         />
         <button type="submit">Add</button>
       </form>
       <ul>
-        {educationList.map((item) => {
-          const { Name, Location, Degree, Major, DateCompleted } = item;
+        {schools.map((school) => {
+          const { Name, Location, Degree, Major, DateCompleted } = school;
           return (
             <div key={uniqid()} className="educationAdded">
               <li key={uniqid()}>
@@ -77,7 +76,7 @@ const Education = (props) => {
                 </ul>
               </li>
               <FontAwesomeIcon
-                onClick={() => onDelete('education', Name)}
+                onClick={() => handleDelete('Education and Training', school)}
                 key={uniqid()}
                 icon="trash"
               />

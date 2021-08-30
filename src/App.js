@@ -28,10 +28,15 @@ const App = () => {
     email: '',
     phoneNumber: '',
     skillValue: '',
+    schoolName: '',
+    schoolLocation: '',
+    degree: '',
+    major: '',
+    completionDate: '',
   });
   const [profile, setProfile] = useState('');
   const [skills, setSkills] = useState([]);
-  const [education, setEducation] = useState([]);
+  const [schools, setEducation] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [jobDuties, setJobDuties] = useState([]);
   const [references, setReferences] = useState([]);
@@ -41,37 +46,34 @@ const App = () => {
   };
   const handleAdd = (e) => {
     e.preventDefault();
-    console.log(e.target);
     const selectForm = e.target;
     switch (e.target.id) {
-      case 'skills':
+      case 'Skills and Highlights':
         setSkills([...skills, input.skillValue]);
         setInput({ ...input, [e.target[0].name]: '' });
         break;
-      case 'education':
+
+      case 'Education and Training':
         setEducation([
-          ...education,
+          ...schools,
           {
-            Name: selectForm.querySelector("input[name='eduNameInput']").value,
-            Location: selectForm.querySelector("input[name='eduLocationInput']")
-              .value,
-            Degree: selectForm.querySelector("input[name='eduDegreeInput']")
-              .value,
-            Major: selectForm.querySelector("input[name='eduMajorInput']")
-              .value,
-            DateCompleted: selectForm.querySelector(
-              "input[name='eduDateInput']"
-            ).value,
+            Name: input.schoolName,
+            Location: input.schoolLocation,
+            Degree: input.degree,
+            Major: input.major,
+            DateCompleted: input.completionDate,
           },
         ]);
         setInput({
-          eduNameInput: '',
-          eduLocationInput: '',
-          eduDegreeInput: '',
-          eduMajorInput: '',
-          eduDateInput: '',
+          ...input,
+          schoolName: '',
+          schoolLocation: '',
+          degree: '',
+          major: '',
+          completionDate: '',
         });
         break;
+
       case 'workExp':
         setJobs([
           ...jobs,
@@ -129,8 +131,12 @@ const App = () => {
         setSkills(skills.filter((skill) => skill !== value));
         break;
 
-      case 'education':
-        setEducation(education.filter((index) => index !== value));
+      case 'Education and Training':
+        setEducation(
+          schools.filter(
+            (school) => JSON.stringify(school) !== JSON.stringify(value)
+          )
+        );
         break;
       case 'workExp':
         setJobs(jobs.filter((index) => index !== value));
@@ -263,7 +269,6 @@ const App = () => {
       },
     ]);
   };
-  console.log(input);
   return (
     <div className="content">
       <section>
@@ -280,7 +285,7 @@ const App = () => {
         <Preview
           profile={profile}
           skills={skills}
-          education={education}
+          schools={schools}
           jobs={jobs}
           references={references}
         />
@@ -295,11 +300,11 @@ const App = () => {
             handleDelete={handleDelete}
           />
           <Education
-            inputState={input}
+            input={input}
             handleChange={handleChange}
-            educationList={education}
-            onAdd={handleAdd}
-            onDelete={handleDelete}
+            schools={schools}
+            handleAdd={handleAdd}
+            handleDelete={handleDelete}
           />
           <WorkExp
             inputState={input}

@@ -8,7 +8,7 @@ const Skills = (props) => {
   return (
     <div>
       <h3>Skills and Highlights</h3>
-      <form id="skills" className="skills" onSubmit={handleAdd}>
+      <form id="Skills and Highlights" className="skills" onSubmit={handleAdd}>
         <input
           type="text"
           name="skillValue"
@@ -24,7 +24,7 @@ const Skills = (props) => {
             <div key={uniqid()}>
               <li key={uniqid()}>{skill}</li>
               <FontAwesomeIcon
-                onClick={(e) => handleDelete('Skills and Highlights', skill)}
+                onClick={() => handleDelete('Skills and Highlights', skill)}
                 key={uniqid()}
                 icon="trash"
               />

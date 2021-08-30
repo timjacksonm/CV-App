@@ -5,10 +5,10 @@ import '../styles/Preview.scss';
 class Document extends Component {
   render() {
     return (
-      <div className='preview'>
-        <div id='cv' className='quickFadeIn'>
-          <div className='titleDetails'>
-            <div id='name'>
+      <div className="preview">
+        <div id="cv" className="quickFadeIn">
+          <div className="titleDetails">
+            <div id="name">
               {
                 <h1
                   key={uniqid()}
@@ -16,7 +16,7 @@ class Document extends Component {
               }
             </div>
 
-            <div id='contactDetails'>
+            <div id="contactDetails">
               <ul>
                 <li>
                   e:{' '}
@@ -31,14 +31,14 @@ class Document extends Component {
             </div>
           </div>
 
-          <div id='mainArea'>
+          <div id="mainArea">
             <section>
-              <div className='sectionTitle'>
+              <div className="sectionTitle">
                 <h1>Skills</h1>
               </div>
 
-              <div className='sectionContent'>
-                <ul className='keySkills'>
+              <div className="sectionContent">
+                <ul className="keySkills">
                   {this.props.data.skills.map((item) => {
                     return <li key={uniqid()}>{item}</li>;
                   })}
@@ -47,10 +47,10 @@ class Document extends Component {
             </section>
 
             <section>
-              <div className='sectionTitle'>
+              <div className="sectionTitle">
                 <h1>Work Experience</h1>
               </div>
-              <div className='sectionContent'>
+              <div className="sectionContent">
                 {this.props.data.jobs.map((item) => {
                   return (
                     <article key={uniqid()}>
@@ -58,7 +58,7 @@ class Document extends Component {
                       <h5>{item.Title}</h5>
                       <p
                         key={uniqid()}
-                        className='subDetails'
+                        className="subDetails"
                       >{`${item.Start} - ${item.End}`}</p>
                       <ul>
                         {item.Description.map((item) => {
@@ -72,11 +72,11 @@ class Document extends Component {
             </section>
 
             <section>
-              <div className='sectionTitle'>
+              <div className="sectionTitle">
                 <h1>Education</h1>
               </div>
-              <div className='sectionContent'>
-                {this.props.data.education.map((item) => {
+              <div className="sectionContent">
+                {this.props.data.schools.map((item) => {
                   return (
                     <article key={uniqid()}>
                       <h2 key={uniqid()}>{item.Name}</h2>
@@ -84,7 +84,7 @@ class Document extends Component {
                       <p key={uniqid()}>{item.Major}</p>
                       <p
                         key={uniqid()}
-                        className='subDetails'
+                        className="subDetails"
                       >{`${item.Degree} - Completed: ${item.DateCompleted}`}</p>
                     </article>
                   );
@@ -93,16 +93,16 @@ class Document extends Component {
             </section>
 
             <section>
-              <div className='sectionTitle'>
+              <div className="sectionTitle">
                 <h1>References</h1>
               </div>
-              <div className='sectionContent'>
+              <div className="sectionContent">
                 {this.props.data.references.map((item) => {
                   return (
                     <article key={uniqid()}>
                       <h2 key={uniqid()}>{item.Name}</h2>
                       <p key={uniqid()}>{item.Relation}</p>
-                      <p key={uniqid()} className='subDetails'>
+                      <p key={uniqid()} className="subDetails">
                         {item.PhoneNumber}
                       </p>
                     </article>
